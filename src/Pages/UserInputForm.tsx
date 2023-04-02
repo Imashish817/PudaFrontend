@@ -9,7 +9,6 @@ export default function UserInputForm() {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     console.log(`Name: ${name}, Email: ${email}, Message: ${message}`);
-    // You can handle the form submission logic here
   };
 
   return (
@@ -22,7 +21,11 @@ export default function UserInputForm() {
       className="container"
     >
       <Form style={{ textAlign: "center" }} onSubmit={handleSubmit}>
-        <Form.Group style={{ textAlign: "left" }} controlId="formName">
+        <Form.Group
+          className="mt-2 mb-2"
+          style={{ textAlign: "left" }}
+          controlId="formName"
+        >
           <Form.Label>Name</Form.Label>
           <Form.Control
             type="text"
@@ -31,7 +34,11 @@ export default function UserInputForm() {
             onChange={(event) => setName(event.target.value)}
           />
         </Form.Group>
-        <Form.Group style={{ textAlign: "left" }} controlId="formEmail">
+        <Form.Group
+          className="mt-2 mb-2"
+          style={{ textAlign: "left" }}
+          controlId="formEmail"
+        >
           <Form.Label>Email address</Form.Label>
           <Form.Control
             type="email"
@@ -40,7 +47,11 @@ export default function UserInputForm() {
             onChange={(event) => setEmail(event.target.value)}
           />
         </Form.Group>
-        <Form.Group style={{ textAlign: "left" }} controlId="formMessage">
+        <Form.Group
+          className="mt-2 mb-2"
+          style={{ textAlign: "left" }}
+          controlId="formMessage"
+        >
           <Form.Label>Message</Form.Label>
           <Form.Control
             as="textarea"

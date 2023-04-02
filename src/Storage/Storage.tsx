@@ -26,7 +26,6 @@ export function MyProvider({ children }: { children: React.ReactNode }) {
     mobile: "",
     aadhar: "",
   });
-
   const updateUser = (name: string, mobile: string, aadhar: string) => {
     setUserInfo({ name, mobile, aadhar });
   };
@@ -54,7 +53,6 @@ export function MyProvider({ children }: { children: React.ReactNode }) {
     updateAadhar,
     updateUser,
   };
-
   return (
     <MyContext.Provider value={contextValues}>{children}</MyContext.Provider>
   );

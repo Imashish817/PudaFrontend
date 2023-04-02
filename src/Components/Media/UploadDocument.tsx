@@ -1,45 +1,45 @@
 import React, { useRef, useState } from "react";
 import { MEDIA } from "../../Constants/Constant";
-import axios from "axios";
-import uploadDocument from "../../APIHandler/UploadDocument";
+import uploadDocument from "../../APIHandler/uploadDocument.ts";
 import { useNavigate } from "react-router-dom";
 
-function convertFileToBlob(file: File | undefined): Blob | undefined {
-  if (!file) return undefined;
-  const blob: Blob = new Blob([file]);
-  return blob;
-}
 export default function UploadDocument() {
   const navigate = useNavigate();
   const [image, setImage] = useState<File>();
   const [previewUrl, setPreviewUrl] = useState<string>();
-  const inputRef = useRef<HTMLInputElement>(null);
-
+  const inputRef = useRef<HTMLInputElement>();
+  const [uploadButton, setButtonText] = useState("Upload");
   const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const selectedImages = event.target.files;
-    if (!selectedImages) {
-      return;
-    }
-    const selectedImage = selectedImages[0];
-    setImage(selectedImage);
-
+    const selectedImage = event.target.files[0];
     const reader = new FileReader();
     reader.onload = () => {
-      setPreviewUrl(reader.result ? reader.result.toString() : "");
+      let uri = reader.result.toString();
+      let image = new Image();
+      image.src = uri;
+      image.onload = () => {
+        if (image.width == 600 && image.height == 600) {
+          setPreviewUrl(uri);
+          setImage(selectedImage);
+        } else {
+          alert("Document width should be 600 X 600");
+        }
+      };
     };
     reader.readAsDataURL(selectedImage);
   };
   const handleSubmit = (event: React.ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (previewUrl) {
-      // uploadDocument(image)
-      //   ?.then((data) => {
-      //     console.log(data);
-      //   })
-      //   .catch((err) => {
-      //     console.log(err);
-      //   });
-      navigate("/userForm");
+      setButtonText("Please wait...");
+      uploadDocument(image)
+        .then(() => {
+          setButtonText("Upload");
+          navigate("/userForm");
+        })
+        .catch((err) => {
+          alert("Unable to upload.Try again");
+          console.log(err);
+        });
     } else {
       inputRef.current?.click();
     }
@@ -75,7 +75,7 @@ export default function UploadDocument() {
         className="btn btn-primary btn-lg btn-block"
         type="submit"
       >
-        {previewUrl ? "Upload" : "Choose File"}
+        {previewUrl ? uploadButton : "Choose File"}
       </button>
     </form>
   );

@@ -1,31 +1,56 @@
 import React, { useState } from "react";
-import { MyContext, MyContextValues } from "../../Storage/Storage";
+import { MyContext } from "../../Storage/Storage";
 import { useNavigate } from "react-router-dom";
 import setCookie from "../../Cookie/setCookie";
 import { COOKIE } from "../../Constants/Constant";
+import authenticate from "../../APIHandler/User/authenticate.ts";
 
 export default function Authenticate() {
   let [formPhone, setFormPhone] = useState("");
+  let [formAadhar, setFormAadhar] = useState("");
   let [formPassword, setFormPassword] = useState("");
-  let { name, mobile, aadhar, updateUser } = React.useContext(MyContext);
+  let { updateUser } = React.useContext(MyContext);
   const navigate = useNavigate();
+
   let login = (event: React.ChangeEvent<HTMLFormElement>): void => {
     event.preventDefault();
-    updateUser("harshit", formPhone, "310766471824");
-    setCookie(COOKIE.KEY, "mytoken", COOKIE.LIFE);
-    navigate("/");
-    return;
+    authenticate(formAadhar, formPhone, formPassword)
+      .then((response) => {
+        updateUser(response.Name, response.MobileNo, response.AadharNo);
+        setCookie(COOKIE.KEY, response.token, COOKIE.LIFE);
+        navigate("/");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
   return (
     <form onSubmit={login}>
       <p>Please login to your account</p>
       <div className="form-row">
         <div className="form-group w-100">
-          <label htmlFor="inputEmail4">Phone</label>
+          <label htmlFor="inputEmail4">Aadhar</label>
+          <input
+            type="number"
+            className="form-control"
+            id="inputAadhar4"
+            placeholder="Aadhar number"
+            value={formAadhar}
+            onInput={(event: React.ChangeEvent<HTMLInputElement>) => {
+              let value: string = event.target.value;
+              if (!value.match(/.*[a-z,A-Z].*/i))
+                setFormAadhar(event.target.value);
+            }}
+          />
+        </div>
+      </div>
+      <div className="form-row">
+        <div className="form-group w-100">
+          <label htmlFor="inputPhone4">Phone</label>
           <input
             type="tel"
             className="form-control"
-            id="inputEmail4"
+            id="inputPhone4"
             placeholder="Contact"
             value={formPhone}
             onInput={(event: React.ChangeEvent<HTMLInputElement>) => {
