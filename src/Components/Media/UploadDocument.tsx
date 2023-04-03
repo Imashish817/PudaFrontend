@@ -17,12 +17,8 @@ export default function UploadDocument() {
       let image = new Image();
       image.src = uri;
       image.onload = () => {
-        if (image.width == 600 && image.height == 600) {
-          setPreviewUrl(uri);
-          setImage(selectedImage);
-        } else {
-          alert("Document width should be 600 X 600");
-        }
+        setPreviewUrl(uri);
+        setImage(selectedImage);
       };
     };
     reader.readAsDataURL(selectedImage);
@@ -37,7 +33,7 @@ export default function UploadDocument() {
           navigate("/userForm");
         })
         .catch((err) => {
-          alert("Unable to upload.Try again");
+          alert("Unable to upload.Kindly check your file size and try again");
           console.log(err);
         });
     } else {
