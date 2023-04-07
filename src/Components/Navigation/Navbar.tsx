@@ -22,10 +22,13 @@ export default function Navbar() {
           <Link className="nav-item nav-link active" to="/">
             Home <span className="sr-only">(current)</span>
           </Link>
-          <Link className="nav-item nav-link disabled" to={USER.LOGIN}>
+          <Link className="nav-item nav-link" to={USER.LOGIN}>
             Login
           </Link>
-          <Link className="nav-item nav-link disabled" to={USER.LOGIN}>
+          <Link className="nav-item nav-link" to={USER.REGISTER}>
+            Register
+          </Link>
+          <Link className="nav-item nav-link" to={USER.LOGOUT}>
             Logout
           </Link>
         </div>

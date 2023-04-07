@@ -1,5 +1,7 @@
 export const USER = {
   LOGIN: "/user/login",
+  REGISTER: "/user/register",
+  LOGOUT: "/user/logout",
 };
 export const COOKIE = { LIFE: 4, KEY: "x-access-token" };
 export const MEDIA = {

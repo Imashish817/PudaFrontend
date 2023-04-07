@@ -1,14 +1,15 @@
 import axios from "axios";
 import ApiConstants from "../../Constants/ApiConstants";
+import { User } from "./userTemplate";
 
-export default function fetchViaToken(token:string): Promise<any> {
+export default function create(
+  body
+): Promise<User> {
   return new Promise((resolve, reject) => {
     axios({
-      method: "GET",
-      url: process.env.REACT_APP_BASE_URL + ApiConstants.USER.VALIDATE_TOKEN,
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
+      method: "POST",
+      url: process.env.REACT_APP_BASE_URL + ApiConstants.USER.REGISTER,
+      data: body,
     })
       .then((response) => {
         resolve(response.data);

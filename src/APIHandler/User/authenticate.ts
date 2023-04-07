@@ -1,6 +1,4 @@
 import axios from "axios";
-import { COOKIE, MEDIA } from "../../Constants/Constant";
-import getCookie from "../../Cookie/getCookie";
 import ApiConstants from "../../Constants/ApiConstants";
 import { User } from "./userTemplate";
 

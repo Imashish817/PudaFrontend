@@ -1,7 +1,7 @@
 export default class ApiConstants {
   public static USER = {
     AUTH: "/api/user/login",
-    REGISTER: "crm/app-integration/connect",
+    REGISTER: "/api/user/register",
     LOGOUT: "crm/app-integration/disconnect",
     VALIDATE_TOKEN: "/api/user/loggeduser",
   };

@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import Authenticate from "../Components/User/Authenticate.tsx";
+import CreateUser from "../Components/User/CreateUser.tsx";
 import { USER } from "../Constants/Constant.ts";
 
-export function Login() {
+export function Register() {
   return (
     <div
       style={{
@@ -15,7 +15,7 @@ export function Login() {
       className="card rounded-3 text-white"
     >
       <div style={{ margin: "10px", padding: "60px" }} className="card-body">
-        <Link to={USER.REGISTER}>
+        <Link to={USER.LOGIN}>
           <button
             style={{
               position: "absolute",
@@ -26,16 +26,16 @@ export function Login() {
               width: "130px",
               paddingTop: "5px",
               paddingBottom: "5px",
-              justifyContent: "space-between",
+              justifyContent: "space-around",
               borderRadius: "1rem",
             }}
             className="btn btn-outline-light"
           >
-            Register
+            Login
             <i style={{ fontSize: "18pt" }} className="bi bi-arrow-right"></i>
           </button>
         </Link>
-        <Authenticate />
+        <CreateUser />
       </div>
     </div>
   );
