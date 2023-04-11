@@ -9,7 +9,7 @@ export default function Layout() {
           height: "100%",
           width: "100%",
           display: "flex",
-          paddingTop: "60px",
+          paddingTop: "55px",
         }}
       >
         <Navbar />

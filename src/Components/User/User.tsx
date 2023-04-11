@@ -1,8 +1,8 @@
 import { Route, Routes } from "react-router-dom";
 import { Login } from "../../Pages/Login.tsx";
-import NotFound from "../../Pages/NotFound.tsx";
 import Logout from "./Logout.tsx";
 import { Register } from "../../Pages/Register.tsx";
+import ResourceError from "../../Pages/ResourceError.tsx";
 
 export default function User() {
   return (
@@ -20,7 +20,7 @@ export default function User() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/logout" element={<Logout />} />
-        <Route path="*" element={<NotFound />} />
+        <Route path="*" element={<ResourceError errorCode={404} />} />
       </Routes>
     </div>
   );

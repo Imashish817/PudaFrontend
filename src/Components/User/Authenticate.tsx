@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { MyContext } from "../../Storage/Storage";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import setCookie from "../../Cookie/setCookie";
 import { COOKIE } from "../../Constants/Constant";
 import authenticate from "../../APIHandler/User/authenticate.ts";
@@ -22,7 +22,11 @@ export default function Authenticate() {
         setbuttonText("Login");
         updateUser(response.Name, response.MobileNo, response.AadharNo);
         setCookie(COOKIE.KEY, response.token, COOKIE.LIFE);
-        navigate("/");
+        if (response.UserType !== "Normal") {
+          navigate("/admin");
+        } else {
+          navigate("/");
+        }
       })
       .catch((err) => {
         setbuttonText("Login");
