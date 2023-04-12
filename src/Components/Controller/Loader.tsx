@@ -5,8 +5,8 @@ import React, { useEffect, useState } from "react";
 import fetchViaToken from "../../APIHandler/User/fetchViaToken";
 import { COOKIE, USER } from "../../Constants/Constant";
 import getCookie from "../../Cookie/getCookie";
-import User from "../User/User";
-import ResourceError from "../../Pages/ResourceError";
+import User from "../User/UserModule";
+import { ResourceError } from "../../Pages/ResourceError";
 import Admin from "../../Pages/Admin";
 
 export default function Loader() {

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import create from "../../APIHandler/User/create.ts";
-import { USER } from "../../Constants/Constant.ts";
+import create from "../../../APIHandler/User/create.ts";
+import { USER } from "../../../Constants/Constant.ts";
 
 export default function CreateUser() {
   const navigate = useNavigate();
@@ -49,7 +49,10 @@ export default function CreateUser() {
     create(body)
       .then(() => {
         setbuttonText("Register");
-        navigate(USER.LOGIN);
+        let map=new Map();
+        map.set("name",body.Name)
+        map.set("aadhar",body.AadharNo)
+        navigate(USER.REGISTER+"/uploadApplication",{state:{data:map}});
       })
       .catch((err) => {
         setbuttonText("Register");
@@ -74,6 +77,7 @@ export default function CreateUser() {
               borderWidth: "0px 0px 1px 0px",
               borderRadius: "0",
               backgroundColor: "transparent",
+              color:"white"
             }}
             type="text"
             className="form-control"
@@ -87,6 +91,7 @@ export default function CreateUser() {
               borderWidth: "0px 0px 1px 0px",
               borderRadius: "0",
               backgroundColor: "transparent",
+              color:"white"
             }}
             type="text"
             className="form-control"
@@ -101,6 +106,7 @@ export default function CreateUser() {
             borderWidth: "0px 0px 1px 0px",
             borderRadius: "0",
             backgroundColor: "transparent",
+            color:"white"
           }}
           type="tel"
           className="form-control"
@@ -115,6 +121,7 @@ export default function CreateUser() {
               borderWidth: "0px 0px 1px 0px",
               borderRadius: "0",
               backgroundColor: "transparent",
+              color:"white"
             }}
             type="password"
             className="form-control"
@@ -128,6 +135,7 @@ export default function CreateUser() {
               borderWidth: "0px 0px 1px 0px",
               borderRadius: "0",
               backgroundColor: "transparent",
+              color:"white"
             }}
             type="password"
             className="form-control"
@@ -142,6 +150,7 @@ export default function CreateUser() {
             borderWidth: "0px 0px 1px 0px",
             borderRadius: "0",
             backgroundColor: "transparent",
+            color:"white"
           }}
           type="number"
           className="form-control"
@@ -149,7 +158,7 @@ export default function CreateUser() {
         />
       </div>
 
-      <div className="text-center pt-1 mb-5 mt-5 pb-1">
+      <div className="text-center pt-1 mt-5 pb-1">
         <button
           type="submit"
           className="btn btn-outline-light btn-lg btn-block"

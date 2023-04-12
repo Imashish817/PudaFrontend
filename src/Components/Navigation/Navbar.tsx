@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { USER } from "../../Constants/Constant.ts";
 export default function Navbar() {
   return (
-    <nav className="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+    <nav style={{height:"10%"}} className="navbar navbar-expand-lg navbar-dark bg-dark">
       <Link className="navbar-brand" to="/">
         Puda
       </Link>

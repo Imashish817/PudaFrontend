@@ -4,7 +4,7 @@ import setCookie from "../../Cookie/setCookie";
 import { COOKIE, USER } from "../../Constants/Constant";
 import { Navigate } from "react-router-dom";
 
-export default function Logout() {
+export function Logout() {
   const { updateUser } = React.useContext(MyContext);
   useEffect(() => {
     updateUser("", "", "");

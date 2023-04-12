@@ -6,7 +6,7 @@ export default function Admin() {
     <div
       style={{
         width: "100%",
-        height: "100%",
+        height: "90%",
         background: "#3e7651",
         color: "white",
       }}
