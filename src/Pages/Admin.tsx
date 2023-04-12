@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import Dashboard from "../Components/Admin/Dashboard";
 
-export default function Admin() {
+export function Admin() {
   return (
     <div
       style={{

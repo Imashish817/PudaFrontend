@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import React, { Suspense } from "react";
+import React from "react";
 const Register = React.lazy(() =>
   import("../../../Pages/Register.tsx").then(({ Register }) => ({
     default: Register,
@@ -18,12 +18,10 @@ const ResourceError = React.lazy(() =>
 
 export function RegisterModule() {
   return (
-    <Suspense>
-      <Routes>
-        <Route index element={<Register />} />
-        <Route path="/uploadApplication" element={<UploadDocument />} />
-        <Route path="*" element={<ResourceError errorCode={404} />} />
-      </Routes>
-    </Suspense>
+    <Routes>
+      <Route index element={<Register />} />
+      <Route path="/uploadApplication" element={<UploadDocument />} />
+      <Route path="*" element={<ResourceError errorCode={404} />} />
+    </Routes>
   );
 }

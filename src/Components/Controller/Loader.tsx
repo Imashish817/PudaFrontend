@@ -1,13 +1,25 @@
 import { Route, Routes, useNavigate } from "react-router-dom";
 import Layout from "../../Pages/Layout";
 import { MyContext, MyContextValues } from "../../Storage/Storage";
-import React, { useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import fetchViaToken from "../../APIHandler/User/fetchViaToken";
 import { COOKIE, USER } from "../../Constants/Constant";
 import getCookie from "../../Cookie/getCookie";
-import User from "../User/UserModule";
-import { ResourceError } from "../../Pages/ResourceError";
-import Admin from "../../Pages/Admin";
+const ResourceError = React.lazy(() =>
+  import("../../Pages/ResourceError.tsx").then(({ ResourceError }) => ({
+    default: ResourceError,
+  }))
+);
+const User = React.lazy(() =>
+  import("../User/UserModule").then(({ User }) => ({
+    default: User,
+  }))
+);
+const Admin = React.lazy(() =>
+  import("../../Pages/Admin").then(({ Admin }) => ({
+    default: Admin,
+  }))
+);
 
 export default function Loader() {
   const { updateUser } = React.useContext<MyContextValues>(MyContext);
@@ -42,12 +54,14 @@ export default function Loader() {
   if (loading) return <>Please wait...</>;
   if (errorCode !== 0) return <ResourceError errorCode={errorCode} />;
   return (
-    <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route path="user/*" element={<User />} />
-        <Route path="admin/*" element={<Admin />} />
-        <Route path="*" element={<ResourceError errorCode={404} />} />
-      </Route>
-    </Routes>
+    <Suspense>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route path="user/*" element={<User />} />
+          <Route path="admin/*" element={<Admin />} />
+          <Route path="*" element={<ResourceError errorCode={404} />} />
+        </Route>
+      </Routes>
+    </Suspense>
   );
 }

@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import React, { Suspense } from "react";
+import React from "react";
 const Login = React.lazy(() =>
   import("../../Pages/Login.tsx").then(({ Login }) => ({
     default: Login,
@@ -21,7 +21,7 @@ const ResourceError = React.lazy(() =>
   }))
 );
 
-export default function User() {
+export function User() {
   return (
     <div
       style={{
@@ -29,14 +29,12 @@ export default function User() {
         height: "90%",
       }}
     >
-      <Suspense>
-        <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path="/register/*" element={<RegisterModule />} />
-          <Route path="/logout" element={<Logout />} />
-          <Route path="*" element={<ResourceError errorCode={404} />} />
-        </Routes>
-      </Suspense>
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/register/*" element={<RegisterModule />} />
+        <Route path="/logout" element={<Logout />} />
+        <Route path="*" element={<ResourceError errorCode={404} />} />
+      </Routes>
     </div>
   );
 }
