@@ -20,7 +20,11 @@ const Admin = React.lazy(() =>
     default: Admin,
   }))
 );
-
+const DashboardModule = React.lazy(() =>
+  import("../Dashboard/DashboardModule.tsx").then(({ DashboardModule }) => ({
+    default: DashboardModule,
+  }))
+);
 export default function Loader() {
   const { updateUser } = React.useContext<MyContextValues>(MyContext);
   const [loading, setLoading] = useState(true);
@@ -58,6 +62,7 @@ export default function Loader() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route path="user/*" element={<User />} />
+          <Route path="dashboard/*" element={<DashboardModule />} />
           <Route path="admin/*" element={<Admin />} />
           <Route path="*" element={<ResourceError errorCode={404} />} />
         </Route>

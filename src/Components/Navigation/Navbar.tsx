@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom";
-import { USER } from "../../Constants/Constant.ts";
+import { DASHBOARD, USER } from "../../Constants/Constant.ts";
 export default function Navbar() {
   return (
-    <nav style={{height:"10%"}} className="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav
+      style={{ height: "10%" }}
+      className="navbar navbar-expand-lg navbar-dark bg-dark"
+    >
       <Link className="navbar-brand" to="/">
         Puda
       </Link>
@@ -27,6 +30,9 @@ export default function Navbar() {
           </Link>
           <Link className="nav-item nav-link" to={USER.REGISTER}>
             Register
+          </Link>
+          <Link className="nav-item nav-link" to={DASHBOARD.APPLICATION1}>
+            Dashboard
           </Link>
           <Link className="nav-item nav-link" to={USER.LOGOUT}>
             Logout

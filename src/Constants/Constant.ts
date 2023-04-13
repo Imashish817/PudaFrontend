@@ -3,6 +3,10 @@ export const USER = {
   REGISTER: "/user/register",
   LOGOUT: "/user/logout",
 };
+export const DASHBOARD = {
+  APPLICATION1: "/dashboard/application1",
+  APPLICATION2: "/dashboard/application2",
+};
 export const COOKIE = { LIFE: 4, KEY: "x-access-token" };
 export const MEDIA = {
   UPLOAD_THUMBNAIL: `https://cdn.pixabay.com/photo/2017/01/18/17/39/cloud-computing-1990405_1280.png`,

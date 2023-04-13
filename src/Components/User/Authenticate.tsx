@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { MyContext } from "../../Storage/Storage";
 import { useNavigate } from "react-router-dom";
 import setCookie from "../../Cookie/setCookie";
-import { COOKIE } from "../../Constants/Constant";
+import { COOKIE, DASHBOARD } from "../../Constants/Constant";
 import authenticate from "../../APIHandler/User/authenticate.ts";
 
 export default function Authenticate() {
@@ -25,7 +25,7 @@ export default function Authenticate() {
         if (response.UserType !== "Normal") {
           navigate("/admin");
         } else {
-          navigate("/");
+          navigate(DASHBOARD.APPLICATION1);
         }
       })
       .catch((err) => {
