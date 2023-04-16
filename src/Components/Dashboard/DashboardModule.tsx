@@ -1,17 +1,8 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import React from "react";
-import { DASHBOARD } from "../../Constants/Constant.ts";
+import Entitlement from "../../Pages/Entitlement.tsx";
+import Dashboard from "./Dashboard.tsx";
 
-const Application1 = React.lazy(() =>
-  import("../../Pages/Application1.tsx").then(({ Application1 }) => ({
-    default: Application1,
-  }))
-);
-const Application2 = React.lazy(() =>
-  import("../../Pages/Application2.tsx").then(({ Application2 }) => ({
-    default: Application2,
-  }))
-);
 const ResourceError = React.lazy(() =>
   import("../../Pages/ResourceError.tsx").then(({ ResourceError }) => ({
     default: ResourceError,
@@ -27,9 +18,8 @@ export function DashboardModule() {
       }}
     >
       <Routes>
-        <Route index element={<Navigate to={DASHBOARD.APPLICATION1} />} />
-        <Route path="/application1" element={<Application1 />} />
-        <Route path="/application2" element={<Application2 />} />
+        <Route index element={<Dashboard />} />
+        <Route path="/entitlement" element={<Entitlement />} />
         <Route path="*" element={<ResourceError errorCode={404} />} />
       </Routes>
     </div>

@@ -58,7 +58,7 @@ export default function Loader() {
   if (loading) return <>Please wait...</>;
   if (errorCode !== 0) return <ResourceError errorCode={errorCode} />;
   return (
-    <Suspense>
+    <Suspense fallback={<>Please wait...</>}>
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route path="user/*" element={<User />} />

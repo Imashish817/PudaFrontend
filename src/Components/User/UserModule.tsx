@@ -1,37 +1,21 @@
 import { Route, Routes } from "react-router-dom";
 import React from "react";
-const Login = React.lazy(() =>
-  import("../../Pages/Login.tsx").then(({ Login }) => ({
-    default: Login,
-  }))
-);
-const Logout = React.lazy(() =>
-  import("./Logout.tsx").then(({ Logout }) => ({
-    default: Logout,
-  }))
-);
-const RegisterModule = React.lazy(() =>
-  import("./Register/RegisterModule.tsx").then(({ RegisterModule }) => ({
-    default: RegisterModule,
-  }))
-);
-const ResourceError = React.lazy(() =>
-  import("../../Pages/ResourceError.tsx").then(({ ResourceError }) => ({
-    default: ResourceError,
-  }))
-);
+import { Login } from "../../Pages/Login";
+import { Logout } from "./Logout";
+import { ResourceError } from "../../Pages/ResourceError";
+import { Register } from "../../Pages/Register";
 
 export function User() {
   return (
     <div
       style={{
-        width: "100%",
         height: "90%",
+        overflow: "auto",
       }}
     >
       <Routes>
         <Route path="/login" element={<Login />} />
-        <Route path="/register/*" element={<RegisterModule />} />
+        <Route path="/register" element={<Register />} />
         <Route path="/logout" element={<Logout />} />
         <Route path="*" element={<ResourceError errorCode={404} />} />
       </Routes>

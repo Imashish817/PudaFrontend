@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import Authenticate from "../Components/User/Authenticate.tsx";
 import { USER } from "../Constants/Constant.ts";
+import "./CSS/Login.css";
 
 export function Login() {
   return (
@@ -10,6 +11,7 @@ export function Login() {
         justifyContent: "center",
         alignItems: "center",
         height: "100%",
+        padding: "10px",
       }}
     >
       <div
@@ -17,31 +19,16 @@ export function Login() {
           border: "1px solid #e9ecea00",
           borderTop: "10px solid #e9ecea00",
           background: "#3e7651",
-          width: "630px",
-          margin: "10px",
+          width: "500px",
         }}
         className="card rounded-3 text-white"
       >
         <div
-          style={{ margin: "10px", padding: "10px 60px" }}
+          style={{ margin: "10px", padding: "10px 20px" }}
           className="card-body"
         >
           <Link to={USER.REGISTER}>
-            <button
-              style={{
-                position: "absolute",
-                top: "10px",
-                right: "70px",
-                display: "flex",
-                alignItems: "center",
-                width: "130px",
-                paddingTop: "5px",
-                paddingBottom: "5px",
-                justifyContent: "space-between",
-                borderRadius: "1rem",
-              }}
-              className="btn btn-outline-light"
-            >
+            <button className="switch btn btn-outline-light">
               Register
               <i style={{ fontSize: "18pt" }} className="bi bi-arrow-right"></i>
             </button>

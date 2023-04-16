@@ -1,0 +1,13 @@
+.entitlement {
+  height: 100%;
+  background: #3e7651;
+  display: flex;
+  color: white;
+}
+
+.entitlement .form-control {
+  margin: 0 10px;
+  border-radius: 0rem;
+  border-width: 0px 0px 1px 0px;
+  background: transparent;
+}

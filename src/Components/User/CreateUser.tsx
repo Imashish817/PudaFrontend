@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import create from "../../../APIHandler/User/create.ts";
-import { USER } from "../../../Constants/Constant.ts";
+import create from "../../APIHandler/User/create.ts";
+import { USER } from "../../Constants/Constant.ts";
 
 export default function CreateUser() {
   const navigate = useNavigate();
@@ -49,10 +49,7 @@ export default function CreateUser() {
     create(body)
       .then(() => {
         setbuttonText("Register");
-        let map=new Map();
-        map.set("name",body.Name)
-        map.set("aadhar",body.AadharNo)
-        navigate(USER.REGISTER+"/uploadApplication",{state:{data:map}});
+        navigate(USER.LOGIN);
       })
       .catch((err) => {
         setbuttonText("Register");
@@ -60,7 +57,7 @@ export default function CreateUser() {
       });
   };
   return (
-    <form onSubmit={submitHandler}>
+    <form style={{ overflow: "auto" }} onSubmit={submitHandler}>
       {err ? (
         <div className="alert alert-danger" role="alert">
           {err}
@@ -68,8 +65,10 @@ export default function CreateUser() {
       ) : (
         <></>
       )}
-      <h3 style={{ margin: "20px 0" }}>Register</h3>
-      <div className="form-row">
+      <div>
+        <h3 style={{ margin: "20px 0" }}>Register</h3>
+      </div>
+      <div className="form-element form-row">
         <div className="form-group col-md-6">
           <label htmlFor="inputFirstName">First Name *</label>
           <input
@@ -77,7 +76,7 @@ export default function CreateUser() {
               borderWidth: "0px 0px 1px 0px",
               borderRadius: "0",
               backgroundColor: "transparent",
-              color:"white"
+              color: "white",
             }}
             type="text"
             className="form-control"
@@ -91,7 +90,7 @@ export default function CreateUser() {
               borderWidth: "0px 0px 1px 0px",
               borderRadius: "0",
               backgroundColor: "transparent",
-              color:"white"
+              color: "white",
             }}
             type="text"
             className="form-control"
@@ -99,21 +98,21 @@ export default function CreateUser() {
           />
         </div>
       </div>
-      <div className="form-group">
+      <div className="form-element form-group">
         <label htmlFor="phone">Mobile No. *</label>
         <input
           style={{
             borderWidth: "0px 0px 1px 0px",
             borderRadius: "0",
             backgroundColor: "transparent",
-            color:"white"
+            color: "white",
           }}
           type="tel"
           className="form-control"
           id="phone"
         />
       </div>
-      <div className="form-row">
+      <div className="form-element form-row">
         <div className="form-group col-md-6">
           <label htmlFor="inputPassword">Password *</label>
           <input
@@ -121,7 +120,7 @@ export default function CreateUser() {
               borderWidth: "0px 0px 1px 0px",
               borderRadius: "0",
               backgroundColor: "transparent",
-              color:"white"
+              color: "white",
             }}
             type="password"
             className="form-control"
@@ -135,7 +134,7 @@ export default function CreateUser() {
               borderWidth: "0px 0px 1px 0px",
               borderRadius: "0",
               backgroundColor: "transparent",
-              color:"white"
+              color: "white",
             }}
             type="password"
             className="form-control"
@@ -143,14 +142,14 @@ export default function CreateUser() {
           />
         </div>
       </div>
-      <div className="form-group">
+      <div className="form-element form-group">
         <label htmlFor="aadhar">Aadhar No. *</label>
         <input
           style={{
             borderWidth: "0px 0px 1px 0px",
             borderRadius: "0",
             backgroundColor: "transparent",
-            color:"white"
+            color: "white",
           }}
           type="number"
           className="form-control"
@@ -158,7 +157,7 @@ export default function CreateUser() {
         />
       </div>
 
-      <div className="text-center pt-1 mt-5 pb-1">
+      <div style={{ margin: "20px 0" }} className="text-center pt-1 pb-1">
         <button
           type="submit"
           className="btn btn-outline-light btn-lg btn-block"

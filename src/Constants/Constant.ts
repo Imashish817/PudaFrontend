@@ -3,9 +3,12 @@ export const USER = {
   REGISTER: "/user/register",
   LOGOUT: "/user/logout",
 };
+export const ADMIN = {
+  INDEX: "/admin",
+};
 export const DASHBOARD = {
-  APPLICATION1: "/dashboard/application1",
-  APPLICATION2: "/dashboard/application2",
+  INDEX: "/dashboard",
+  ENTITLEMENT: "/dashboard/entitlement",
 };
 export const COOKIE = { LIFE: 4, KEY: "x-access-token" };
 export const MEDIA = {

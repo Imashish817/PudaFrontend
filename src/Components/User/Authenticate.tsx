@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { MyContext } from "../../Storage/Storage";
 import { useNavigate } from "react-router-dom";
 import setCookie from "../../Cookie/setCookie";
-import { COOKIE, DASHBOARD } from "../../Constants/Constant";
+import { ADMIN, COOKIE, DASHBOARD } from "../../Constants/Constant";
 import authenticate from "../../APIHandler/User/authenticate.ts";
 
 export default function Authenticate() {
@@ -23,18 +23,18 @@ export default function Authenticate() {
         updateUser(response.Name, response.MobileNo, response.AadharNo);
         setCookie(COOKIE.KEY, response.token, COOKIE.LIFE);
         if (response.UserType !== "Normal") {
-          navigate("/admin");
+          navigate(ADMIN.INDEX);
         } else {
-          navigate(DASHBOARD.APPLICATION1);
+          navigate(DASHBOARD.INDEX);
         }
       })
       .catch((err) => {
         setbuttonText("Login");
-        console.log(err);
+        alert(err.response.data.message);
       });
   };
   return (
-    <form onSubmit={login}>
+    <form style={{ overflow: "auto" }} onSubmit={login}>
       <h3 style={{ margin: "20px 0" }}>Login</h3>
       <div>
         <div className="form-group w-100">
@@ -44,6 +44,7 @@ export default function Authenticate() {
               borderWidth: "0px 0px 1px 0px",
               borderRadius: "0",
               backgroundColor: "transparent",
+              color: "white",
             }}
             type="number"
             className="form-control"
@@ -65,6 +66,7 @@ export default function Authenticate() {
               borderWidth: "0px 0px 1px 0px",
               borderRadius: "0",
               backgroundColor: "transparent",
+              color: "white",
             }}
             type="tel"
             className="form-control"
@@ -86,6 +88,7 @@ export default function Authenticate() {
               borderWidth: "0px 0px 1px 0px",
               borderRadius: "0",
               backgroundColor: "transparent",
+              color: "white",
             }}
             type="password"
             className="form-control"
@@ -98,7 +101,7 @@ export default function Authenticate() {
           />
         </div>
       </div>
-      <div className="text-center pt-1 mb-5 mt-5 pb-1">
+      <div style={{ margin: "30px 0" }} className="text-center pt-1 pb-1">
         <button
           type="submit"
           className="btn btn-outline-light btn-lg btn-block"
