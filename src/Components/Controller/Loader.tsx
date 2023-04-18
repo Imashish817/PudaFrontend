@@ -5,6 +5,9 @@ import React, { Suspense, useEffect, useState } from "react";
 import fetchViaToken from "../../APIHandler/User/fetchViaToken";
 import { COOKIE, USER } from "../../Constants/Constant";
 import getCookie from "../../Cookie/getCookie";
+import IsAuthorised from "../Navigation/IsAuthorised.tsx";
+import Home from "../../Pages/Home.tsx";
+import Splash from "../../Pages/Splash.tsx";
 const ResourceError = React.lazy(() =>
   import("../../Pages/ResourceError.tsx").then(({ ResourceError }) => ({
     default: ResourceError,
@@ -39,7 +42,12 @@ export default function Loader() {
     fetchViaToken(token)
       .then((response) => {
         response = response.user;
-        updateUser(response.Name, response.MobileNo, response.AadharNo);
+        updateUser(
+          response.Name,
+          response.MobileNo,
+          response.AadharNo,
+          response.Files
+        );
         setLoading(false);
       })
       .catch((err) => {
@@ -55,14 +63,18 @@ export default function Loader() {
         }
       });
   }, []);
-  if (loading) return <>Please wait...</>;
+  if (loading) return <Splash />;
   if (errorCode !== 0) return <ResourceError errorCode={errorCode} />;
   return (
-    <Suspense fallback={<>Please wait...</>}>
+    <Suspense fallback={<Splash />}>
       <Routes>
         <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
           <Route path="user/*" element={<User />} />
-          <Route path="dashboard/*" element={<DashboardModule />} />
+          <Route
+            path="dashboard/*"
+            element={<IsAuthorised element={<DashboardModule />} />}
+          />
           <Route path="admin/*" element={<Admin />} />
           <Route path="*" element={<ResourceError errorCode={404} />} />
         </Route>

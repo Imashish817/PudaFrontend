@@ -4,14 +4,7 @@ import { USER } from "../Constants/Constant.ts";
 import "./CSS/Register.css";
 export function Register() {
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        margin: "10px",
-      }}
-    >
+    <div className="Register">
       <div
         style={{
           width: "100%",

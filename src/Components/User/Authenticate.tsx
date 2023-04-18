@@ -20,12 +20,17 @@ export default function Authenticate() {
     authenticate(formAadhar, formPhone, formPassword)
       .then((response) => {
         setbuttonText("Login");
-        updateUser(response.Name, response.MobileNo, response.AadharNo);
+        updateUser(
+          response.Name,
+          response.MobileNo,
+          response.AadharNo,
+          response.Files
+        );
         setCookie(COOKIE.KEY, response.token, COOKIE.LIFE);
-        if (response.UserType !== "Normal") {
-          navigate(ADMIN.INDEX);
-        } else {
+        if (response.UserType === "1") {
           navigate(DASHBOARD.INDEX);
+        } else {
+          navigate(ADMIN.INDEX);
         }
       })
       .catch((err) => {

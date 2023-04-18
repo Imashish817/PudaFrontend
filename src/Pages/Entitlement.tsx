@@ -32,23 +32,23 @@ export default function Entitlement() {
     <div className="entitlement">
       <div
         style={{
-          width: "80%",
+          width: "100%",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
         }}
       >
         <div className="w-100">
-          <div
-            style={{
-              padding: "10px 0",
-              width: "100%",
-              maxWidth: "350px",
-              margin: "auto",
-            }}
-          >
+          <div className="element-container">
             <p>Hand written application</p>
-            <div style={{ display: "flex" }}>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                flexWrap: "wrap",
+                alignItems: "center",
+              }}
+            >
               <input
                 ref={signedApplicationName}
                 className="form-control text-white"
@@ -63,26 +63,33 @@ export default function Entitlement() {
                   setSignedApplicationFile(event.target.files[0]);
                 }}
               />
-              <button
-                onClick={() => {
-                  signedApplication.current.click();
-                }}
-                className="btn btn-outline-light"
-              >
-                Browse
-              </button>
+              <div style={{ display: "flex", justifyContent: "center" }}>
+                <button
+                  onClick={() => {
+                    signedApplication.current.click();
+                  }}
+                  className="btn btn-outline-light"
+                >
+                  Browse
+                </button>
+                <a href={process.env.REACT_APP_SIGNED_APPLICATION} download>
+                  <button className="btn btn-outline-light">
+                    Download form
+                  </button>
+                </a>
+              </div>
             </div>
           </div>
-          <div
-            style={{
-              padding: "10px 0",
-              width: "100%",
-              maxWidth: "350px",
-              margin: "auto",
-            }}
-          >
+          <div className="element-container">
             <p>Land application</p>
-            <div style={{ display: "flex" }}>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                flexWrap: "wrap",
+                alignItems: "center",
+              }}
+            >
               <input
                 ref={application1Name}
                 className="form-control text-white"
@@ -97,26 +104,33 @@ export default function Entitlement() {
                   setApplication1File(file);
                 }}
               />
-              <button
-                onClick={() => {
-                  application1.current.click();
-                }}
-                className="btn btn-outline-light"
-              >
-                Browse
-              </button>
+              <div style={{ display: "flex", justifyContent: "center" }}>
+                <button
+                  onClick={() => {
+                    application1.current.click();
+                  }}
+                  className="btn btn-outline-light"
+                >
+                  Browse
+                </button>
+                <a href={process.env.REACT_APP_APPLICATION1} download>
+                  <button className="btn btn-outline-light">
+                    Download form
+                  </button>
+                </a>
+              </div>
             </div>
           </div>
-          <div
-            style={{
-              padding: "10px 0",
-              width: "100%",
-              maxWidth: "350px",
-              margin: "auto",
-            }}
-          >
+          <div className="element-container">
             <p>Payment application</p>
-            <div style={{ display: "flex" }}>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                flexWrap: "wrap",
+                alignItems: "center",
+              }}
+            >
               <input
                 ref={application2Name}
                 className="form-control text-white"
@@ -131,26 +145,33 @@ export default function Entitlement() {
                   setApplication2File(file);
                 }}
               />
-              <button
-                onClick={() => {
-                  application2.current.click();
-                }}
-                className="btn btn-outline-light"
-              >
-                Browse
-              </button>
+              <div style={{ display: "flex", justifyContent: "center" }}>
+                <button
+                  onClick={() => {
+                    application2.current.click();
+                  }}
+                  className="btn btn-outline-light"
+                >
+                  Browse
+                </button>
+                <a href={process.env.REACT_APP_APPLICATION2} download>
+                  <button className="btn btn-outline-light">
+                    Download form
+                  </button>
+                </a>
+              </div>
             </div>
           </div>
-          <div
-            style={{
-              padding: "10px 0",
-              width: "100%",
-              maxWidth: "350px",
-              margin: "auto",
-            }}
-          >
+          <div className="element-container">
             <p>Confirmation application</p>
-            <div style={{ display: "flex" }}>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                flexWrap: "wrap",
+                alignItems: "center",
+              }}
+            >
               <input
                 ref={application3Name}
                 className="form-control text-white"
@@ -165,14 +186,21 @@ export default function Entitlement() {
                 }}
                 style={{ display: "none" }}
               />
-              <button
-                onClick={() => {
-                  application3.current.click();
-                }}
-                className="btn btn-outline-light"
-              >
-                Browse
-              </button>
+              <div style={{ display: "flex", justifyContent: "center" }}>
+                <button
+                  onClick={() => {
+                    application3.current.click();
+                  }}
+                  className="btn btn-outline-light"
+                >
+                  Browse
+                </button>
+                <a href={process.env.REACT_APP_APPLICATION3} download>
+                  <button className="btn btn-outline-light">
+                    Download form
+                  </button>
+                </a>
+              </div>
             </div>
           </div>
           <div style={{ width: "70%", margin: "40px auto" }}>
@@ -193,7 +221,6 @@ export default function Entitlement() {
           </div>
         </div>
       </div>
-      <div style={{ width: "20%" }}>{/* <p>dead</p> */}</div>
     </div>
   );
 }

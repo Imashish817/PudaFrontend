@@ -9,6 +9,8 @@ export const ADMIN = {
 export const DASHBOARD = {
   INDEX: "/dashboard",
   ENTITLEMENT: "/dashboard/entitlement",
+  COMPLAINT: "/dashboard/complaint",
+  FILES: "/dashboard/files",
 };
 export const COOKIE = { LIFE: 4, KEY: "x-access-token" };
 export const MEDIA = {

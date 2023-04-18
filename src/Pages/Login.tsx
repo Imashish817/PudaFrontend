@@ -5,15 +5,7 @@ import "./CSS/Login.css";
 
 export function Login() {
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        height: "100%",
-        padding: "10px",
-      }}
-    >
+    <div className="Login">
       <div
         style={{
           border: "1px solid #e9ecea00",

@@ -1,7 +1,7 @@
 import axios from "axios";
 import ApiConstants from "../../Constants/ApiConstants";
 
-export default function fetchViaToken(token:string): Promise<any> {
+export default function fetchViaToken(token: string): Promise<any> {
   return new Promise((resolve, reject) => {
     axios({
       method: "GET",
@@ -11,6 +11,7 @@ export default function fetchViaToken(token:string): Promise<any> {
       },
     })
       .then((response) => {
+        axios.defaults.headers.common["Authorization"] = token;
         resolve(response.data);
       })
       .catch((err) => {

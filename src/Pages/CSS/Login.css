@@ -1,4 +1,11 @@
-.switch {
+.Login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 10px;
+}
+.Login .switch {
   position: absolute;
   top: 40px;
   right: 50px;
