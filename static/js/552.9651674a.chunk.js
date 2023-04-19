@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkpudafrontend=self.webpackChunkpudafrontend||[]).push([[552],{552:function(r,e,n){n.r(e),n.d(e,{ResourceError:function(){return o}});n(791);var u=n(184);function o(r){return(0,u.jsxs)("h1",{children:["Unable to load resource ",r.errorCode]})}}}]);
+//# sourceMappingURL=552.9651674a.chunk.js.map
