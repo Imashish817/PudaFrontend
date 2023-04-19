@@ -16,7 +16,7 @@ export default function CreateUser() {
       AadharNo: form[5].value,
       Password: form[3].value,
       Password_Confirmation: form[4].value,
-      UserType: "Normal",
+      UserType: "1",
       tc: true,
     };
     let isValid = true;
