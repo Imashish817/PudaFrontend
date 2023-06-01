@@ -9,8 +9,7 @@ export function User() {
   return (
     <div
       style={{
-        height: "90%",
-        overflow: "auto",
+        height: "100%"
       }}
     >
       <Routes>

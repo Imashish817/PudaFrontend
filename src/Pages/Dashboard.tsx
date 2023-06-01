@@ -1,41 +1,20 @@
 import { useState } from "react";
-import { DASHBOARD } from "../Constants/Constant";
 import { Link } from "react-router-dom";
 
-export default function Dashboard() {
+export default function Dashboard(props) {
   const [options, setOptions] = useState<
     Array<{
       head: String;
       description: String;
       link: String;
       img: String;
+      disabled:any;
     }>
-  >([
-    {
-      head: "Create new file",
-      description: "You can create new file with required applications",
-      link: DASHBOARD.ENTITLEMENT,
-      img: "bi-plus-circle-fill",
-    },
-    {
-      head: "Complaints",
-      description:
-        "You can issue complaints which will be sent to operations team",
-      link: DASHBOARD.COMPLAINT,
-      img: "bi-file-earmark-arrow-up-fill",
-    },
-    {
-      head: "Check files",
-      description:
-        "You can view your uploaded file and check its current status",
-      link: DASHBOARD.FILES,
-      img: "bi-eye-fill",
-    },
-  ]);
+  >(props?.options?props.options:[]);
   return (
     <div
       style={{
-        height: "90%",
+        height: "100%",
       }}
     >
       <div
@@ -57,13 +36,16 @@ export default function Dashboard() {
           }}
         >
           {options.map((value, idx) => {
+            if(value.disabled){
+              return (<></>)
+            }
             return (
               <Link
                 key={idx}
                 style={{
                   textDecoration: "none",
                   color: "black",
-                  margin: "10px",
+                  margin: "10px 30px",
                 }}
                 to={String(value.link)}
               >

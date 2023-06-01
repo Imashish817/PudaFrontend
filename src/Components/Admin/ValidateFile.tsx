@@ -5,7 +5,7 @@ import getUnverified from "../../APIHandler/User/getUnverified";
 import getCookie from "../../Cookie/getCookie";
 import { COOKIE } from "../../Constants/Constant";
 
-export default function Dashboard() {
+export default function ValidateFile() {
   let { name } = React.useContext(MyContext);
   let [options, setOptions] = useState<Array<string>>([]);
   let [selectedUser, setSelectedUser] = useState<User | null>(null);
@@ -124,6 +124,21 @@ export default function Dashboard() {
                   className="bi bi-arrow-right"
                 ></i>
               </p>
+              <p
+                style={{
+                  fontSize: "12pt",
+                  display: "flex",
+                  justifyContent: "space-evenly",
+                  alignItems: "center",
+                  width: "90px",
+                }}
+              >
+                Reject
+                <i
+                  style={{ fontSize: "18pt" }}
+                  className="bi bi-arrow-right"
+                ></i>
+              </p>              
             </div>
           ) : (
             <></>

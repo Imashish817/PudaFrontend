@@ -1,10 +1,23 @@
 export const USER = {
+  INDEX:"/user",
   LOGIN: "/user/login",
   REGISTER: "/user/register",
   LOGOUT: "/user/logout",
 };
 export const ADMIN = {
   INDEX: "/admin",
+  VALIDATE_FILE:"/validate",
+  VERIFICATION:"/verification",
+  APPOINTMENT:"/appointment"
+};
+export const PATWARI = {
+  INDEX: "/patwari",
+  CHECK_FILES:"/checkFiles"
+};
+
+export const ACCOUNTS = {
+  INDEX: "/accounts",
+  CHECK_FILES:"/checkFiles"
 };
 export const DASHBOARD = {
   INDEX: "/dashboard",

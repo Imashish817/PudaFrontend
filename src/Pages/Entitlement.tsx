@@ -209,7 +209,6 @@ export default function Entitlement() {
                 !(
                   signedApplicationFile &&
                   (application1File || application2File) &&
-                  (!application1File || !application2File) &&
                   application3File
                 )
               }

@@ -2,7 +2,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 10px;
+  padding: 10px;
+  height: 100%;
 }
 .Register .switch {
   position: absolute;

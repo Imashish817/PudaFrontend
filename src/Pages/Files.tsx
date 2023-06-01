@@ -1,18 +1,20 @@
+import { useNavigate } from "react-router-dom";
 import { MyContext } from "../Storage/Storage";
 import React, { useEffect } from "react";
-
+import {DASHBOARD} from "../Constants/Constant"
 export default function Files() {
+  const navigate = useNavigate();
   const { files } = React.useContext(MyContext);
   const [applications, setApplications] = React.useState<Array<String>>();
   const [status, setStatus] = React.useState<String>();
-  let setCurrentFile = (file) => {
+  const setCurrentFile = (file) => {
     setApplications([
-      file.SignedAplication,
-      file.ApplicationsForm1,
-      file.ApplicationsForm2,
+      file?.SignedAplication,
+      file?.ApplicationsForm1,
+      file?.ApplicationsForm2,
     ]);
-    console.log(file.IsAproved);
-    switch (file.IsAproved) {
+    console.log(file?.IsAproved);
+    switch (file?.IsAproved) {
       case "1":
         setStatus("In progress");
         break;
@@ -24,18 +26,22 @@ export default function Files() {
         break;
     }
   };
-  let setApplicationData = (event) => {
+  const setApplicationData = (event) => {
     let file = files[event.target.value];
     setCurrentFile(file);
   };
   useEffect(() => {
-    setCurrentFile(files[0]);
+    if(files.length>0){
+      setCurrentFile(files[0]);
+    }else{
+      navigate(DASHBOARD.INDEX)
+    }
   }, []);
   return (
     <div
       style={{
         width: "100%",
-        height: "90%",
+        height: "100%",
         padding: "10px",
         background: "#3e7651",
         color: "white",

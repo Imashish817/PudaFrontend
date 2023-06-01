@@ -3,7 +3,7 @@ import Layout from "../../Pages/Layout";
 import { MyContext, MyContextValues } from "../../Storage/Storage";
 import React, { Suspense, useEffect, useState } from "react";
 import fetchViaToken from "../../APIHandler/User/fetchViaToken";
-import { COOKIE, USER } from "../../Constants/Constant";
+import { ACCOUNTS, ADMIN, COOKIE, DASHBOARD, USER } from "../../Constants/Constant";
 import getCookie from "../../Cookie/getCookie";
 import IsAuthorised from "../Navigation/IsAuthorised.tsx";
 import Home from "../../Pages/Home.tsx";
@@ -70,12 +70,13 @@ export default function Loader() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
-          <Route path="user/*" element={<User />} />
+          <Route path={`${USER.INDEX}/*`} element={<User />} />
           <Route
-            path="dashboard/*"
+            path={`${DASHBOARD.INDEX}/*`}
             element={<IsAuthorised element={<DashboardModule />} />}
           />
-          <Route path="admin/*" element={<Admin />} />
+          <Route path={`${ADMIN.INDEX}/*`} element={<Admin />} />
+          <Route path={`${ACCOUNTS.INDEX}/*`} element={<Admin />} />
           <Route path="*" element={<ResourceError errorCode={404} />} />
         </Route>
       </Routes>

@@ -1,6 +1,5 @@
 .Home {
-  height: 90%;
-  overflow: auto;
+  height: 100%;
 }
 .Home .carousel-control-next,
 .carousel-control-prev {
@@ -12,6 +11,12 @@
 .Home .carousel {
   height: 100%;
 }
+.Home .carousel img {
+  object-fit: cover;
+}
 .Home .carousel-inner {
+  height: 100%;
+}
+.Home .carousel-item{
   height: 100%;
 }

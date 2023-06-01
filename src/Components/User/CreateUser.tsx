@@ -7,7 +7,7 @@ export default function CreateUser() {
   const navigate = useNavigate();
   const [err, setErr] = useState(null);
   const [buttonText, setbuttonText] = useState("Register");
-  let submitHandler = (event): void => {
+  const submitHandler = (event): void => {
     event.preventDefault();
     let form = event.target;
     let body = {

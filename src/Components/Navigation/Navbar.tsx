@@ -1,9 +1,12 @@
 import { Link } from "react-router-dom";
 import { DASHBOARD, USER } from "../../Constants/Constant.ts";
+import React from "react";
+import { MyContext, MyContextValues } from "../../Storage/Storage.tsx";
 export default function Navbar() {
+  const { aadhar } = React.useContext<MyContextValues>(MyContext);
   return (
     <nav
-      style={{ zIndex: "999", minHeight: "10%" }}
+      style={{ zIndex: "999" }}
       className="navbar navbar-expand-lg navbar-dark bg-dark"
     >
       <Link className="navbar-brand" to="/">
@@ -22,21 +25,17 @@ export default function Navbar() {
       </button>
       <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div className="navbar-nav">
-          <Link className="nav-item nav-link" to="/">
-            Home <span className="sr-only">(current)</span>
-          </Link>
           <Link className="nav-item nav-link" to={USER.LOGIN}>
             Login
-          </Link>
-          <Link className="nav-item nav-link" to={USER.REGISTER}>
-            Register
           </Link>
           <Link className="nav-item nav-link" to={DASHBOARD.INDEX}>
             Dashboard
           </Link>
-          <Link className="nav-item nav-link" to={USER.LOGOUT}>
+          {
+            aadhar && <Link className="nav-item nav-link" to={USER.LOGOUT}>
             Logout
           </Link>
+          }
         </div>
       </div>
     </nav>
