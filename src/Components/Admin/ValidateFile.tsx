@@ -9,15 +9,17 @@ export default function ValidateFile() {
   let { name } = React.useContext(MyContext);
   let [options, setOptions] = useState<Array<string>>([]);
   let [selectedUser, setSelectedUser] = useState<User | null>(null);
-  let aadharMappingUser = new Map<string, User>();
+  let [aadharMappingUser, setAadharMappingUser] = useState<Map<string, User>>();
 
   useEffect(() => {
     getUnverified(getCookie(COOKIE.KEY)).then((users: Array<User>) => {
       let options = [];
+      let aadharMappingUserCopy = new Map(aadharMappingUser);
       for (let user of users) {
-        aadharMappingUser.set(user.AadharNo, user);
+        aadharMappingUserCopy.set(user.AadharNo, user);
         options.push(user.AadharNo);
       }
+      setAadharMappingUser(aadharMappingUserCopy);
       setOptions(options);
     });
   }, []);
@@ -94,51 +96,69 @@ export default function ValidateFile() {
             </div>
           </form>
           {selectedUser ? (
-            <div style={{ display: "flex" }}>
-              {typeof selectedUser.URLPaths === "string" ? (
-                <div>
-                  <img src={selectedUser.URLPaths} />
-                  <p>{selectedUser.filePaths}</p>
-                </div>
-              ) : (
-                selectedUser.URLPaths.map((path) => {
-                  return (
-                    <div>
-                      <img src={path} />
-                    </div>
-                  );
-                })
-              )}
-              <p
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                flexDirection: "column",
+                alignItems: "center",
+              }}
+            >
+              <div style={{ display: "flex" }}>
+                {typeof selectedUser.URLPaths === "string" ? (
+                  <div>
+                    <img src={selectedUser.URLPaths} />
+                    <p>{selectedUser.filePaths}</p>
+                  </div>
+                ) : (
+                  selectedUser.URLPaths.map((path) => {
+                    if (!path) return;
+                    return (
+                      <div
+                        style={{ margin: "0 30px", border: "1px solid white" }}
+                      >
+                        <img style={{ width: "300px" }} src={path} />
+                      </div>
+                    );
+                  })
+                )}
+              </div>
+              <button
                 style={{
-                  fontSize: "12pt",
+                  borderRadius: "1rem",
                   display: "flex",
-                  justifyContent: "space-evenly",
+                  justifyContent: "space-around",
                   alignItems: "center",
-                  width: "90px",
+                  width: "150px",
+                  margin: "10px",
                 }}
+                type="submit"
+                className="btn btn-outline-light"
               >
                 Verify
                 <i
                   style={{ fontSize: "18pt" }}
                   className="bi bi-arrow-right"
                 ></i>
-              </p>
-              <p
+              </button>
+              <button
                 style={{
-                  fontSize: "12pt",
+                  borderRadius: "1rem",
                   display: "flex",
-                  justifyContent: "space-evenly",
+                  justifyContent: "space-around",
                   alignItems: "center",
-                  width: "90px",
+                  width: "150px",
+                  margin: "10px",
                 }}
+                type="submit"
+                className="btn btn-outline-light"
               >
                 Reject
                 <i
                   style={{ fontSize: "18pt" }}
                   className="bi bi-arrow-right"
                 ></i>
-              </p>              
+              </button>
             </div>
           ) : (
             <></>

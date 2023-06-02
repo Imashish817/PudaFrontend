@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { MyContext } from "../Storage/Storage";
 import React, { useEffect } from "react";
-import {DASHBOARD} from "../Constants/Constant"
+import { DASHBOARD } from "../Constants/Constant";
 export default function Files() {
   const navigate = useNavigate();
   const { files } = React.useContext(MyContext);
@@ -13,7 +13,6 @@ export default function Files() {
       file?.ApplicationsForm1,
       file?.ApplicationsForm2,
     ]);
-    console.log(file?.IsAproved);
     switch (file?.IsAproved) {
       case "1":
         setStatus("In progress");
@@ -31,10 +30,10 @@ export default function Files() {
     setCurrentFile(file);
   };
   useEffect(() => {
-    if(files.length>0){
+    if (files.length > 0) {
       setCurrentFile(files[0]);
-    }else{
-      navigate(DASHBOARD.INDEX)
+    } else {
+      navigate(DASHBOARD.INDEX);
     }
   }, []);
   return (

@@ -1,14 +1,14 @@
 import { Route, Routes } from "react-router-dom";
-import { PATWARI } from "../Constants/Constant";
+import { CONSULTANT } from "../Constants/Constant";
 import Dashboard from "./Dashboard";
-import CheckFiles from "../Components/Patwari/CheckFiles";
+import CheckFiles from "../Components/Consultant/CheckFiles";
 
-export function Patwari() {
+export function Consultant() {
   const options = [
     {
       head: "Check files",
       description: "You can create new file with required applications",
-      link: PATWARI.INDEX + PATWARI.CHECK_FILES,
+      link: CONSULTANT.INDEX + CONSULTANT.CHECK_FILES,
       img: "bi-plus-circle-fill",
       disabled: false,
     },
@@ -24,7 +24,7 @@ export function Patwari() {
     >
       <Routes>
         <Route index element={<Dashboard options={options} />}></Route>
-        <Route path={PATWARI.CHECK_FILES} element={<CheckFiles />}></Route>
+        <Route path={CONSULTANT.CHECK_FILES} element={<CheckFiles />}></Route>
       </Routes>
     </div>
   );

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { MyContext } from "../../Storage/Storage";
 import { useNavigate } from "react-router-dom";
 import setCookie from "../../Cookie/setCookie";
-import { ADMIN, COOKIE, DASHBOARD } from "../../Constants/Constant";
+import { ACCESS_MAP, ADMIN, COOKIE, DASHBOARD } from "../../Constants/Constant";
 import authenticate from "../../APIHandler/User/authenticate.ts";
 
 export default function Authenticate() {
@@ -24,14 +24,11 @@ export default function Authenticate() {
           response.Name,
           response.MobileNo,
           response.AadharNo,
+          response.UserType,
           response.Files
         );
         setCookie(COOKIE.KEY, response.token, COOKIE.LIFE);
-        if (response.UserType === "1") {
-          navigate(DASHBOARD.INDEX);
-        } else {
-          navigate(ADMIN.INDEX);
-        }
+        navigate(ACCESS_MAP[`${response.UserType}`]);
       })
       .catch((err) => {
         setbuttonText("Login");

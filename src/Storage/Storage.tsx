@@ -5,6 +5,7 @@ export type MyContextValues = {
   name: string;
   aadhar: string;
   mobile: string;
+  accessCode: string | null;
   files: Array<{
     FileNo: String;
     SignedAplication: String;
@@ -16,10 +17,12 @@ export type MyContextValues = {
   updateName: (name: string) => void;
   updateMobile: (mobile: string) => void;
   updateAadhar: (aadhar: string) => void;
+  updateAccessCode: (code: string) => void;
   updateUser: (
     name: string,
     mobile: string,
     aadhar: string,
+    code: string,
     files: Array<{
       FileNo: String;
       SignedAplication: String;
@@ -33,14 +36,17 @@ export const MyContext = createContext<MyContextValues>({
   name: "",
   aadhar: "",
   mobile: "",
+  accessCode: "",
   files: [],
   updateAadhar: (name: string) => {},
   updateMobile: (mobile: string) => {},
   updateName: (aadhar: string) => {},
+  updateAccessCode: (code: string) => {},
   updateUser: (
     name: string,
     mobile: string,
     aadhar: string,
+    code: string,
     files: Array<{
       FileNo: String;
       SignedAplication: String;
@@ -57,12 +63,14 @@ export function MyProvider({ children }: { children: React.ReactNode }) {
     name: "",
     mobile: "",
     aadhar: "",
+    code: "",
     files: [],
   });
   const updateUser = (
     name: string,
     mobile: string,
     aadhar: string,
+    code: string,
     files: Array<{
       FileNo: String;
       SignedAplication: String;
@@ -72,33 +80,45 @@ export function MyProvider({ children }: { children: React.ReactNode }) {
       IsAproved: String;
     }>
   ) => {
-    setUserInfo({ name, mobile, aadhar, files });
+    setUserInfo({ name, mobile, aadhar, code, files });
+  };
+  const updateAccessCode = (code: string) => {
+    let name = userInfo.name;
+    let mobile = userInfo.mobile;
+    let aadhar = userInfo.aadhar;
+    let files = userInfo.files;
+    setUserInfo({ name, mobile, aadhar, code, files });
   };
   const updateName = (name: string) => {
     let mobile = userInfo.mobile;
     let aadhar = userInfo.aadhar;
     let files = userInfo.files;
-    setUserInfo({ name, mobile, aadhar, files });
+    let code = userInfo.code;
+    setUserInfo({ name, mobile, aadhar, code, files });
   };
   const updateMobile = (mobile: string) => {
     let name = userInfo.name;
     let aadhar = userInfo.aadhar;
     let files = userInfo.files;
-    setUserInfo({ name, mobile, aadhar, files });
+    let code = userInfo.code;
+    setUserInfo({ name, mobile, aadhar, files, code });
   };
   const updateAadhar = (aadhar: string) => {
     let name = userInfo.name;
     let mobile = userInfo.mobile;
     let files = userInfo.files;
-    setUserInfo({ name, mobile, aadhar, files });
+    let code = userInfo.code;
+    setUserInfo({ name, mobile, aadhar, files, code });
   };
   const contextValues: MyContextValues = {
     name: userInfo.name,
     mobile: userInfo.mobile,
     aadhar: userInfo.aadhar,
     files: userInfo.files,
+    accessCode: userInfo.code,
     updateName,
     updateMobile,
+    updateAccessCode,
     updateAadhar,
     updateUser,
   };

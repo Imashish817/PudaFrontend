@@ -3,12 +3,12 @@ import { USER } from "../../Constants/Constant";
 import React from "react";
 import { MyContext, MyContextValues } from "../../Storage/Storage.tsx";
 
-export default function IsAuthorised({ element: Component }) {
-  const { aadhar } = React.useContext<MyContextValues>(MyContext);
+export default function IsAuthorised({ element: Component, userType: code }) {
+  const { aadhar, accessCode } = React.useContext<MyContextValues>(MyContext);
   return (
     <>
       {(() => {
-        if (aadhar) return React.cloneElement(Component);
+        if (aadhar && accessCode == code) return React.cloneElement(Component);
         return <Navigate to={USER.LOGIN} />;
       })()}
     </>

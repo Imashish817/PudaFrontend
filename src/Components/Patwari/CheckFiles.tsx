@@ -102,6 +102,7 @@ export default function CheckFiles() {
                 </div>
               ) : (
                 selectedUser.URLPaths.map((path) => {
+                  if (!path) return;
                   return (
                     <div>
                       <img src={path} />

@@ -3,11 +3,22 @@ import Layout from "../../Pages/Layout";
 import { MyContext, MyContextValues } from "../../Storage/Storage";
 import React, { Suspense, useEffect, useState } from "react";
 import fetchViaToken from "../../APIHandler/User/fetchViaToken";
-import { ACCOUNTS, ADMIN, COOKIE, DASHBOARD, USER } from "../../Constants/Constant";
+import {
+  ACCOUNTS,
+  ADMIN,
+  CONSULTANT,
+  COOKIE,
+  DASHBOARD,
+  PATWARI,
+  USER,
+} from "../../Constants/Constant";
 import getCookie from "../../Cookie/getCookie";
 import IsAuthorised from "../Navigation/IsAuthorised.tsx";
 import Home from "../../Pages/Home.tsx";
 import Splash from "../../Pages/Splash.tsx";
+import { Accounts } from "../../Pages/Accounts.tsx";
+import { Consultant } from "../../Pages/Consultant.tsx";
+import { Patwari } from "../../Pages/Patwari.tsx";
 const ResourceError = React.lazy(() =>
   import("../../Pages/ResourceError.tsx").then(({ ResourceError }) => ({
     default: ResourceError,
@@ -46,6 +57,7 @@ export default function Loader() {
           response.Name,
           response.MobileNo,
           response.AadharNo,
+          response.UserType,
           response.Files
         );
         setLoading(false);
@@ -73,10 +85,27 @@ export default function Loader() {
           <Route path={`${USER.INDEX}/*`} element={<User />} />
           <Route
             path={`${DASHBOARD.INDEX}/*`}
-            element={<IsAuthorised element={<DashboardModule />} />}
+            element={
+              <IsAuthorised userType={1} element={<DashboardModule />} />
+            }
           />
-          <Route path={`${ADMIN.INDEX}/*`} element={<Admin />} />
-          <Route path={`${ACCOUNTS.INDEX}/*`} element={<Admin />} />
+          <Route
+            path={`${ADMIN.INDEX}/*`}
+            element={<IsAuthorised userType={2} element={<Admin />} />}
+          />
+          <Route
+            path={`${ACCOUNTS.INDEX}/*`}
+            element={<IsAuthorised userType={5} element={<Accounts />} />}
+          />
+          <Route
+            path={`${PATWARI.INDEX}/*`}
+            element={<IsAuthorised userType={4} element={<Patwari />} />}
+          />
+          <Route
+            path={`${CONSULTANT.INDEX}/*`}
+            element={<IsAuthorised userType={3} element={<Consultant />} />}
+          />
+
           <Route path="*" element={<ResourceError errorCode={404} />} />
         </Route>
       </Routes>
