@@ -7,9 +7,11 @@ export default function Navbar() {
   const { aadhar, accessCode } = React.useContext<MyContextValues>(MyContext);
   return (
     <nav>
-      <div className="logo">
-        <div className="arrow-down"></div>
-      </div>
+      <Link to={"/"}>
+        <div className="logo">
+          <div className="arrow-down"></div>
+        </div>
+      </Link>
       <ul>
         {!aadhar && (
           <li>
