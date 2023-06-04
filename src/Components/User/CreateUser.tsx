@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import create from "../../APIHandler/User/create.ts";
 import { USER } from "../../Constants/Constant.ts";
 
@@ -57,7 +57,8 @@ export default function CreateUser() {
       });
   };
   return (
-    <form style={{ overflow: "auto" }} onSubmit={submitHandler}>
+    <form onSubmit={submitHandler}>
+      <h1>Register</h1>
       {err ? (
         <div className="alert alert-danger" role="alert">
           {err}
@@ -65,106 +66,35 @@ export default function CreateUser() {
       ) : (
         <></>
       )}
-      <div>
-        <h3 style={{ margin: "20px 0" }}>Register</h3>
+      <div className="inputbox">
+        <input type="text" id="inputFirstName" />
+        <label htmlFor="inputFirstName">First Name *</label>
       </div>
-      <div className="form-element form-row">
-        <div className="form-group col-md-6">
-          <label htmlFor="inputFirstName">First Name *</label>
-          <input
-            style={{
-              borderWidth: "0px 0px 1px 0px",
-              borderRadius: "0",
-              backgroundColor: "transparent",
-              color: "white",
-            }}
-            type="text"
-            className="form-control"
-            id="inputFirstName"
-          />
-        </div>
-        <div className="form-group col-md-6">
-          <label htmlFor="inputLastName">Last Name *</label>
-          <input
-            style={{
-              borderWidth: "0px 0px 1px 0px",
-              borderRadius: "0",
-              backgroundColor: "transparent",
-              color: "white",
-            }}
-            type="text"
-            className="form-control"
-            id="inputLastName"
-          />
-        </div>
+      <div className="inputbox">
+        <input type="text" id="inputLastName" />
+        <label htmlFor="inputLastName">Last Name *</label>
       </div>
-      <div className="form-element form-group">
+      <div className="inputbox">
+        <input type="tel" id="phone" />
         <label htmlFor="phone">Mobile No. *</label>
-        <input
-          style={{
-            borderWidth: "0px 0px 1px 0px",
-            borderRadius: "0",
-            backgroundColor: "transparent",
-            color: "white",
-          }}
-          type="tel"
-          className="form-control"
-          id="phone"
-        />
       </div>
-      <div className="form-element form-row">
-        <div className="form-group col-md-6">
-          <label htmlFor="inputPassword">Password *</label>
-          <input
-            style={{
-              borderWidth: "0px 0px 1px 0px",
-              borderRadius: "0",
-              backgroundColor: "transparent",
-              color: "white",
-            }}
-            type="password"
-            className="form-control"
-            id="inputPassword"
-          />
-        </div>
-        <div className="form-group col-md-6">
-          <label htmlFor="inputPassword2">Confirm Password *</label>
-          <input
-            style={{
-              borderWidth: "0px 0px 1px 0px",
-              borderRadius: "0",
-              backgroundColor: "transparent",
-              color: "white",
-            }}
-            type="password"
-            className="form-control"
-            id="inputPassword2"
-          />
-        </div>
-      </div>
-      <div className="form-element form-group">
+      <div className="inputbox">
+        <input type="number" id="aadhar" />
         <label htmlFor="aadhar">Aadhar No. *</label>
-        <input
-          style={{
-            borderWidth: "0px 0px 1px 0px",
-            borderRadius: "0",
-            backgroundColor: "transparent",
-            color: "white",
-          }}
-          type="number"
-          className="form-control"
-          id="aadhar"
-        />
       </div>
-
-      <div style={{ margin: "20px 0" }} className="text-center pt-1 pb-1">
-        <button
-          type="submit"
-          className="btn btn-outline-light btn-lg btn-block"
-          style={{ borderRadius: "1rem" }}
-        >
-          {buttonText}
-        </button>
+      <div className="inputbox">
+        <input type="password" id="inputPassword" />
+        <label htmlFor="inputPassword">Password *</label>
+      </div>
+      <div className="inputbox">
+        <input type="password" id="inputPassword2" />
+        <label htmlFor="inputPassword2">Confirm Password *</label>
+      </div>
+      <button type="submit">{buttonText}</button>
+      <div className="register">
+        <p>
+          Don't have a account <Link to={USER.LOGIN}>Login</Link>
+        </p>
       </div>
     </form>
   );

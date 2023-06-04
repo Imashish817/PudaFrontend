@@ -2,15 +2,21 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function Dashboard(props) {
+  const gradients = [
+    "linear-gradient(82.59deg, #00c48c 0%, #00a173 100%)",
+    "linear-gradient(81.67deg, #0084f4 0%, #1a4da2 100%)",
+    "linear-gradient(69.83deg, #0084f4 0%, #00c48c 100%)",
+    "linear-gradient(81.67deg, #ff647c 0%, #1f5dc5 100%)",
+  ];
   const [options, setOptions] = useState<
     Array<{
       head: String;
       description: String;
       link: String;
       img: String;
-      disabled:any;
+      disabled: any;
     }>
-  >(props?.options?props.options:[]);
+  >(props?.options ? props.options : []);
   return (
     <div
       style={{
@@ -36,8 +42,8 @@ export default function Dashboard(props) {
           }}
         >
           {options.map((value, idx) => {
-            if(value.disabled){
-              return (<></>)
+            if (value.disabled) {
+              return <></>;
             }
             return (
               <Link
@@ -52,7 +58,11 @@ export default function Dashboard(props) {
                 <div
                   className="card"
                   style={{
-                    width: "18rem",
+                    maxWidth: "30rem",
+                    color: "white",
+                    background: gradients[idx % gradients.length],
+                    borderRadius: "20px",
+                    padding: "20px",
                   }}
                 >
                   <i

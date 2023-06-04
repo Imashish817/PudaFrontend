@@ -3,19 +3,124 @@
   justify-content: center;
   align-items: center;
   height: 100%;
-  padding: 10px;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "poppins", sans-serif;
+  background-image: url(https://pixabay.com/get/gb2c3fb7cea4d53f50e9c295370278e9ef1d7416ee9f71ac15b22e515463e935e1b6ae860026bd36209a316f31b09bcbc30f15f351838a48e9790f9a1709071de7d62050b43e8d3df037c93508a40580e_1280.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
-.Login .switch {
-  position: absolute;
-  top: 40px;
-  right: 50px;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap");
+
+.Login section {
+  position: relative;
+  max-width: 400px;
+  background-color: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 20px;
+  backdrop-filter: blur(55px);
   display: flex;
+  justify-content: center;
   align-items: center;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  justify-content: space-around;
-  border-radius: 1rem;
-  margin: auto;
-  margin-right: 0;
-  width: 120px;
+  padding: 2rem 3rem;
+}
+
+.Login h1 {
+  font-size: 2rem;
+  color: #fff;
+  text-align: center;
+}
+
+.Login .inputbox {
+  position: relative;
+  margin: 30px 0;
+  max-width: 310px;
+  border-bottom: 2px solid #fff;
+}
+
+.Login .inputbox label {
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  transform: translateY(-50%);
+  color: #fff;
+  font-size: 1rem;
+  pointer-events: none;
+  transition: all 0.5s ease-in-out;
+}
+
+.Login input:focus ~ label,
+.Login input:valid ~ label {
+  top: -5px;
+}
+
+.Login .inputbox input {
+  width: 100%;
+  height: 60px;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  padding: 0 35px 0 5px;
+  color: #fff;
+}
+
+.Login .inputbox ion-icon {
+  position: absolute;
+  right: 8px;
+  color: #fff;
+  font-size: 1.2rem;
+  top: 20px;
+}
+
+.Login .forget {
+  margin: 35px 0;
+  font-size: 0.9rem;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+}
+
+.Login .forget label input {
+  margin-right: 3px;
+}
+
+.Login .forget label a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.Login .forget label a:hover {
+  text-decoration: underline;
+}
+
+.Login button {
+  width: 100%;
+  height: 40px;
+  border-radius: 40px;
+  background-color: #fff;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.Login .register {
+  font-size: 0.9rem;
+  color: #fff;
+  text-align: center;
+  margin: 25px 0 10px;
+}
+
+.Login .register p a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 600;
+}
+
+.Login .register p a:hover {
+  text-decoration: underline;
 }

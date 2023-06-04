@@ -1,22 +1,122 @@
 .Home {
   height: 100%;
+  font-size: 62.5%;
+  box-sizing: border-box;
+  width: 100%;
 }
-.Home .carousel-control-next,
-.carousel-control-prev {
-  background: transparent;
-  height: 10%;
-  margin: auto;
+.Home .banner {
+  height: auto;
+  margin: 32px 0px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+@media (min-width: 768px) {
+  .Home .banner {
+    height: 450px;
+    margin-bottom: 32px;
+  }
+}
+.Home .banner .banner-image {
+  position: absolute;
+  opacity: 0.25;
+  right: 0px;
+  top: 0px;
+  height: 300px;
+  z-index: -1;
+  filter: drop-shadow(0 3rem 0.05rem #bfd8ff);
+}
+@media (min-width: 768px) {
+  .Home .banner .banner-image {
+    display: inherit;
+    height: 400px;
+    top: 0px;
+    opacity: 0.5;
+  }
+}
+@media (min-width: 992px) {
+  .Home .banner .banner-image {
+    height: 500px;
+    top: -50px;
+    opacity: 1;
+  }
+}
+.Home .banner .banner-text {
+  max-width: 550px;
+  float: left;
+}
+.Home .banner .banner-text h1 {
+  color: #00106a;
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  margin-bottom: 1rem;
+}
+.Home .banner .banner-text p {
+  color: #00106a;
+  font-size: 1.05rem;
+  line-height: 1.75;
+}
+.Home .banner button {
+  border: 0;
+  border-radius: 50px;
+  padding: 0.75rem 2.75rem;
+  background: #4b71ff;
+  color: #ffffff;
+  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  position: relative;
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 1px;
+  transition: all 0.3s ease-in-out;
+}
+.Home .banner button:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 1rem 1.5rem rgba(0, 0, 0, 0.25);
+}
+
+.Home .mb-30 {
+  margin-bottom: 30px;
+}
+
+.Home .card {
+  padding: 16px 24px;
+  background: #ffffff;
+  height: 100%;
+  position: relative;
   border: none;
+  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.15);
+  border: 2px solid transparent;
+  transition: all 0.3s ease-in-out;
+  z-index: 10;
 }
-.Home .carousel {
-  height: 100%;
+.Home .card h3.card-title {
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: #00106a;
 }
-.Home .carousel img {
-  object-fit: cover;
+.Home .card p {
+  color: #989dc5;
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 72px;
 }
-.Home .carousel-inner {
-  height: 100%;
+.Home .card .card-link {
+  position: absolute;
+  bottom: 18px;
 }
-.Home .carousel-item{
-  height: 100%;
+.Home .card:hover {
+  transform: translateY(-15px);
+  box-shadow: 0 1rem 1.5rem rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+}
+.Home .card .card-icon {
+  width: 60px;
+  margin-bottom: 8px;
+  position: relative;
+  top: 0;
+  left: -12px;
 }

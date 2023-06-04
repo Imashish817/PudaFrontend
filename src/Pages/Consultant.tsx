@@ -18,7 +18,7 @@ export function Consultant() {
       style={{
         width: "100%",
         height: "100%",
-        background: "#3e7651",
+        backgroundColor: "#61398F",
         color: "white",
       }}
     >
