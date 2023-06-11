@@ -7,27 +7,31 @@ import { COOKIE } from "../../Constants/Constant";
 import getImage from "../../APIHandler/getImage";
 
 export default function CheckFiles() {
-  let { name } = React.useContext(MyContext);
+  let { name, accessCode } = React.useContext(MyContext);
   let [options, setOptions] = useState<Array<string>>([]);
   let [selectedUser, setSelectedUser] = useState<User | null>(null);
-  let aadharMappingUser = new Map<string, User>();
+  let [fileMappingUser, setFileMappingUser] = useState<Map<string, User>>();
 
   useEffect(() => {
-    GetUnverified(getCookie(COOKIE.KEY)).then((users: Array<User>) => {
-      let options = [];
-      for (let user of users) {
-        aadharMappingUser.set(user.AadharNo, user);
-        options.push(user.AadharNo);
+    GetUnverified(getCookie(COOKIE.KEY), accessCode).then(
+      (users: Array<any>) => {
+        let options = [];
+        let fileMappingUserCopy = new Map(fileMappingUser);
+        for (let user of users) {
+          fileMappingUserCopy.set(user.FileNo, user);
+          options.push(user.FileNo);
+        }
+        setFileMappingUser(fileMappingUserCopy);
+        setOptions(options);
       }
-      setOptions(options);
-    });
+    );
   }, []);
   let getDetails = (event) => {
     event.preventDefault();
     let form = event.target;
-    let aadhar = form[0].value;
-    if (!aadhar || !aadhar.trim()) return;
-    let userDetail = aadharMappingUser.get(aadhar);
+    let file = form[0].value;
+    if (!file || !file.trim()) return;
+    let userDetail = fileMappingUser.get(file);
     setSelectedUser(userDetail);
   };
   return (

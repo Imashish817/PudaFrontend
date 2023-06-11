@@ -1,10 +1,10 @@
 import axios from "axios";
 import ApiConstants from "../../Constants/ApiConstants";
-import React from "react";
-import { MyContext } from "../../Storage/Storage";
 
-export default function Getunverified(token: string): Promise<any> {
-  const { accessCode } = React.useContext(MyContext);
+export default function Getunverified(
+  token: string,
+  accessCode: string
+): Promise<any> {
   let URL = process.env.REACT_APP_BASE_URL;
   switch (accessCode) {
     case "2":
@@ -23,7 +23,7 @@ export default function Getunverified(token: string): Promise<any> {
   return new Promise((resolve, reject) => {
     axios({
       method: "GET",
-      url: process.env.REACT_APP_BASE_URL + URL,
+      url: URL,
       headers: {
         Authorization: `Bearer ${token}`,
       },
