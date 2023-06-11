@@ -3,7 +3,11 @@ import { MyContext } from "../../Storage/Storage";
 import { User } from "../../APIHandler/User/userTemplate";
 import GetUnverified from "../../APIHandler/User/GetUnverified";
 import getCookie from "../../Cookie/getCookie";
-import { COOKIE } from "../../Constants/Constant";
+import {
+  COOKIE,
+  SUCCESS_APPROVE,
+  SUCCESS_REJECT,
+} from "../../Constants/Constant";
 import getImage from "../../APIHandler/getImage";
 
 export default function ValidateFile() {
@@ -137,6 +141,7 @@ export default function ValidateFile() {
                 }}
                 type="submit"
                 className="btn btn-outline-light"
+                onClick={() => alert(SUCCESS_APPROVE)}
               >
                 Verify
                 <i
@@ -155,6 +160,7 @@ export default function ValidateFile() {
                 }}
                 type="submit"
                 className="btn btn-outline-light"
+                onClick={() => alert(SUCCESS_REJECT)}
               >
                 Reject
                 <i

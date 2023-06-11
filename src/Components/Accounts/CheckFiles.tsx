@@ -3,7 +3,11 @@ import { MyContext } from "../../Storage/Storage";
 import { User } from "../../APIHandler/User/userTemplate";
 import GetUnverified from "../../APIHandler/User/GetUnverified";
 import getCookie from "../../Cookie/getCookie";
-import { COOKIE } from "../../Constants/Constant";
+import {
+  COOKIE,
+  SUCCESS_APPROVE,
+  SUCCESS_REJECT,
+} from "../../Constants/Constant";
 import getImage from "../../APIHandler/getImage";
 
 export default function CheckFiles() {
@@ -99,52 +103,71 @@ export default function CheckFiles() {
             </div>
           </form>
           {selectedUser ? (
-            <div style={{ display: "flex" }}>
-              {typeof selectedUser.URLPaths === "string" ? (
-                <div>
-                  <img src={getImage(selectedUser.URLPaths)} />
-                  <p>{selectedUser.filePaths}</p>
-                </div>
-              ) : (
-                selectedUser.URLPaths.map((path) => {
-                  if (!path) return;
-                  return (
-                    <div>
-                      <img src={getImage(path)} />
-                    </div>
-                  );
-                })
-              )}
-              <p
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                flexDirection: "column",
+                alignItems: "center",
+              }}
+            >
+              <div style={{ display: "flex" }}>
+                {typeof selectedUser.URLPaths === "string" ? (
+                  <div>
+                    <img src={getImage(selectedUser.URLPaths)} />
+                    <p>{selectedUser.filePaths}</p>
+                  </div>
+                ) : (
+                  selectedUser.URLPaths.map((path) => {
+                    if (!path) return;
+                    return (
+                      <div
+                        style={{ margin: "0 30px", border: "1px solid white" }}
+                      >
+                        <img style={{ width: "300px" }} src={getImage(path)} />
+                      </div>
+                    );
+                  })
+                )}
+              </div>
+              <button
                 style={{
-                  fontSize: "12pt",
+                  borderRadius: "1rem",
                   display: "flex",
-                  justifyContent: "space-evenly",
+                  justifyContent: "space-around",
                   alignItems: "center",
-                  width: "90px",
+                  width: "150px",
+                  margin: "10px",
                 }}
+                type="submit"
+                className="btn btn-outline-light"
+                onClick={() => alert(SUCCESS_APPROVE)}
               >
                 Verify
                 <i
                   style={{ fontSize: "18pt" }}
                   className="bi bi-arrow-right"
                 ></i>
-              </p>
-              <p
+              </button>
+              <button
                 style={{
-                  fontSize: "12pt",
+                  borderRadius: "1rem",
                   display: "flex",
-                  justifyContent: "space-evenly",
+                  justifyContent: "space-around",
                   alignItems: "center",
-                  width: "90px",
+                  width: "150px",
+                  margin: "10px",
                 }}
+                type="submit"
+                className="btn btn-outline-light"
+                onClick={() => alert(SUCCESS_REJECT)}
               >
                 Reject
                 <i
                   style={{ fontSize: "18pt" }}
                   className="bi bi-arrow-right"
                 ></i>
-              </p>
+              </button>
             </div>
           ) : (
             <></>
