@@ -1,6 +1,7 @@
 import axios from "axios";
 import { COOKIE } from "../../Constants/Constant";
 import getCookie from "../../Cookie/getCookie";
+import getImage from "../getImage";
 
 export default function uploadApplications(
   writtenApplication: File,

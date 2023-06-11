@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { MyContext } from "../../Storage/Storage";
 import { User } from "../../APIHandler/User/userTemplate";
-import getUnverified from "../../APIHandler/User/getUnverified";
+import GetUnverified from "../../APIHandler/User/GetUnverified";
 import getCookie from "../../Cookie/getCookie";
 import { COOKIE } from "../../Constants/Constant";
+import getImage from "../../APIHandler/getImage";
 
 export default function CheckFiles() {
   let { name } = React.useContext(MyContext);
@@ -12,7 +13,7 @@ export default function CheckFiles() {
   let aadharMappingUser = new Map<string, User>();
 
   useEffect(() => {
-    getUnverified(getCookie(COOKIE.KEY)).then((users: Array<User>) => {
+    GetUnverified(getCookie(COOKIE.KEY)).then((users: Array<User>) => {
       let options = [];
       for (let user of users) {
         aadharMappingUser.set(user.AadharNo, user);
@@ -97,7 +98,7 @@ export default function CheckFiles() {
             <div style={{ display: "flex" }}>
               {typeof selectedUser.URLPaths === "string" ? (
                 <div>
-                  <img src={selectedUser.URLPaths} />
+                  <img src={getImage(selectedUser.URLPaths)} />
                   <p>{selectedUser.filePaths}</p>
                 </div>
               ) : (
@@ -105,7 +106,7 @@ export default function CheckFiles() {
                   if (!path) return;
                   return (
                     <div>
-                      <img src={path} />
+                      <img src={getImage(path)} />
                     </div>
                   );
                 })

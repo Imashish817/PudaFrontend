@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { MyContext } from "../../Storage/Storage";
 import { User } from "../../APIHandler/User/userTemplate";
-import getUnverified from "../../APIHandler/User/getUnverified";
+import GetUnverified from "../../APIHandler/User/GetUnverified";
 import getCookie from "../../Cookie/getCookie";
 import { COOKIE } from "../../Constants/Constant";
+import getImage from "../../APIHandler/getImage";
 
 export default function ValidateFile() {
   let { name } = React.useContext(MyContext);
@@ -12,7 +13,7 @@ export default function ValidateFile() {
   let [aadharMappingUser, setAadharMappingUser] = useState<Map<string, User>>();
 
   useEffect(() => {
-    getUnverified(getCookie(COOKIE.KEY)).then((users: Array<User>) => {
+    GetUnverified(getCookie(COOKIE.KEY)).then((users: Array<User>) => {
       let options = [];
       let aadharMappingUserCopy = new Map(aadharMappingUser);
       for (let user of users) {
@@ -107,7 +108,7 @@ export default function ValidateFile() {
               <div style={{ display: "flex" }}>
                 {typeof selectedUser.URLPaths === "string" ? (
                   <div>
-                    <img src={selectedUser.URLPaths} />
+                    <img src={getImage(selectedUser.URLPaths)} />
                     <p>{selectedUser.filePaths}</p>
                   </div>
                 ) : (
@@ -117,7 +118,7 @@ export default function ValidateFile() {
                       <div
                         style={{ margin: "0 30px", border: "1px solid white" }}
                       >
-                        <img style={{ width: "300px" }} src={path} />
+                        <img style={{ width: "300px" }} src={getImage(path)} />
                       </div>
                     );
                   })
