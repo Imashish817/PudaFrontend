@@ -5,7 +5,7 @@ export default function Getunverified(
   token: string,
   accessCode: string
 ): Promise<any> {
-  let URL = process.env.REACT_APP_BASE_URL;
+  let URL = "";
   switch (accessCode) {
     case "2":
       URL = URL.concat(ApiConstants.USER.UNVERIFIED_OP);
