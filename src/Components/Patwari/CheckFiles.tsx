@@ -3,18 +3,17 @@ import { MyContext } from "../../Storage/Storage";
 import { User } from "../../APIHandler/User/userTemplate";
 import GetUnverified from "../../APIHandler/User/GetUnverified";
 import getCookie from "../../Cookie/getCookie";
-import {
-  COOKIE,
-  SUCCESS_APPROVE,
-  SUCCESS_REJECT,
-} from "../../Constants/Constant";
+import { COOKIE } from "../../Constants/Constant";
 import getImage from "../../APIHandler/getImage";
+import approve from "../../APIHandler/Dashboard/approve";
+import reject from "../../APIHandler/Dashboard/reject";
 
 export default function CheckFiles() {
   let { name, accessCode } = React.useContext(MyContext);
   let [options, setOptions] = useState<Array<string>>([]);
   let [selectedUser, setSelectedUser] = useState<User | null>(null);
   let [fileMappingUser, setFileMappingUser] = useState<Map<string, User>>();
+  let [selectedFileNo, setSelectedFileNo] = useState<string>();
 
   useEffect(() => {
     GetUnverified(getCookie(COOKIE.KEY), accessCode).then(
@@ -36,8 +35,29 @@ export default function CheckFiles() {
     let file = form[0].value;
     if (!file || !file.trim()) return;
     let userDetail = fileMappingUser.get(file);
+    setSelectedFileNo(file.trim());
     setSelectedUser(userDetail);
   };
+  const approveSelected = () => {
+    approve(selectedFileNo, selectedUser.AadharNo)
+      .then((res) => {
+        alert(res);
+      })
+      .catch((err) => {
+        alert(err);
+      });
+  };
+
+  const rejectSelected = () => {
+    reject(selectedFileNo, selectedUser.AadharNo)
+      .then((res) => {
+        alert(res);
+      })
+      .catch((err) => {
+        alert(err);
+      });
+  };
+
   return (
     <div
       style={{
@@ -141,9 +161,9 @@ export default function CheckFiles() {
                 }}
                 type="submit"
                 className="btn btn-outline-light"
-                onClick={() => alert(SUCCESS_APPROVE)}
+                onClick={approveSelected}
               >
-                Verify
+                Approve
                 <i
                   style={{ fontSize: "18pt" }}
                   className="bi bi-arrow-right"
@@ -160,7 +180,7 @@ export default function CheckFiles() {
                 }}
                 type="submit"
                 className="btn btn-outline-light"
-                onClick={() => alert(SUCCESS_REJECT)}
+                onClick={rejectSelected}
               >
                 Reject
                 <i
