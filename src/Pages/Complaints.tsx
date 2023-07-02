@@ -16,7 +16,7 @@ export default function Complaints() {
       style={{
         width: "100%",
         height: "100%",
-        background: "#3e7651",
+        background: "linear-gradient(to right, #3c1053, #ad5389)",
         color: "white",
         padding: "20px",
       }}
@@ -38,12 +38,12 @@ export default function Complaints() {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          height:"100%"
+          height: "100%",
         }}
       >
         <div style={{ width: "300px", margin: "auto" }}>
           <form onSubmit={submitter}>
-            <div style={{marginBottom:"3.5rem"}}>
+            <div style={{ marginBottom: "3.5rem" }}>
               <label htmlFor="exampleFormControlInput1">Name</label>
               <input
                 style={{
@@ -59,7 +59,7 @@ export default function Complaints() {
                 onChange={(event) => setCName(event.target.value)}
               />
             </div>
-            <div style={{marginBottom:"3.5rem"}}>
+            <div style={{ marginBottom: "3.5rem" }}>
               <label htmlFor="exampleFormControlInput1">Aadhar</label>
               <input
                 type="number"
@@ -75,7 +75,7 @@ export default function Complaints() {
                 onChange={(event) => setCAadhar(event.target.value)}
               />
             </div>
-            <div style={{marginBottom:"3.5rem"}}>
+            <div style={{ marginBottom: "3.5rem" }}>
               <label htmlFor="exampleFormControlTextarea1">Message</label>
               <textarea
                 className="form-control"

@@ -42,7 +42,7 @@ export default function Files() {
         width: "100%",
         height: "100%",
         padding: "10px",
-        background: "#3e7651",
+        background: "linear-gradient(to right, #3c1053, #ad5389)",
         color: "white",
       }}
     >
