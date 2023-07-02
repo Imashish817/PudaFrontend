@@ -3,11 +3,7 @@ import { MyContext } from "../../Storage/Storage";
 import { User } from "../../APIHandler/User/userTemplate";
 import GetUnverified from "../../APIHandler/User/GetUnverified";
 import getCookie from "../../Cookie/getCookie";
-import {
-  COOKIE,
-  SUCCESS_APPROVE,
-  SUCCESS_REJECT,
-} from "../../Constants/Constant";
+import { COOKIE } from "../../Constants/Constant";
 import getImage from "../../APIHandler/getImage";
 import approve from "../../APIHandler/Dashboard/approve";
 import reject from "../../APIHandler/Dashboard/reject";

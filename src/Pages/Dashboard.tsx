@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 
 export default function Dashboard(props) {
   const gradients = [
-    "linear-gradient(82.59deg, #00c48c 0%, #00a173 100%)",
-    "linear-gradient(81.67deg, #0084f4 0%, #1a4da2 100%)",
-    "linear-gradient(69.83deg, #0084f4 0%, #00c48c 100%)",
-    "linear-gradient(81.67deg, #ff647c 0%, #1f5dc5 100%)",
+    "linear-gradient(to right, #240b36, #c31432)",
+    "linear-gradient(to right, #4286f4, #373B44)",
+    "linear-gradient(to right, #3c1053, #ad5389)",
+    "linear-gradient(to right, #24243e, #302b63, #0f0c29)",
   ];
   const [options, setOptions] = useState<
     Array<{
@@ -26,14 +26,27 @@ export default function Dashboard(props) {
       <div
         style={{
           height: "100%",
-          background: "#3e7651",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
           padding: "10px",
+          position: "relative",
+          top: 0,
         }}
         className="text-center"
       >
+        <img
+          src="https://imagesforpuda.blob.core.windows.net/applications/forest-4824759_1280.webp"
+          style={{
+            position: "absolute",
+            top: 0,
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            objectPosition: "center",
+            filter: "contrast(0.3) brightness(2)",
+          }}
+        />
         <div
           style={{
             display: "flex",
@@ -63,6 +76,7 @@ export default function Dashboard(props) {
                     background: gradients[idx % gradients.length],
                     borderRadius: "20px",
                     padding: "20px",
+                    height: "216px",
                   }}
                 >
                   <i

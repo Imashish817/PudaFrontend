@@ -18,7 +18,7 @@ export function Consultant() {
       style={{
         width: "100%",
         height: "100%",
-        backgroundColor: "#3e7651",
+        backgroundColor: "linear-gradient(to right, #3c1053, #ad5389)",
         color: "white",
       }}
     >

@@ -18,8 +18,8 @@ export function Patwari() {
       style={{
         width: "100%",
         height: "100%",
-        background: "#3e7651",
         color: "white",
+        background: "linear-gradient(to right, #3c1053, #ad5389)",
       }}
     >
       <Routes>

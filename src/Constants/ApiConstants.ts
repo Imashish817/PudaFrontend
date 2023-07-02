@@ -8,6 +8,8 @@ export default class ApiConstants {
     UNVERIFIED_ACC: "/api/admin/GetUnverifiedUsersForAcc",
     LOGOUT: "crm/app-integration/disconnect",
     VALIDATE_TOKEN: "/api/user/loggeduser",
+    APPOINTMENT_USERS: "/api/admin/usersToBookAppointment",
+    BOOK_APPOINTMENT: "/api/admin/BookAppointment",
   };
   public static MEDIA = {
     UPLOAD: "/api/File/upload",
