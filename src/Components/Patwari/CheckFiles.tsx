@@ -3,10 +3,13 @@ import { MyContext } from "../../Storage/Storage";
 import { User } from "../../APIHandler/User/userTemplate";
 import GetUnverified from "../../APIHandler/User/GetUnverified";
 import getCookie from "../../Cookie/getCookie";
-import { COOKIE } from "../../Constants/Constant";
+import { COOKIE, PATWARI } from "../../Constants/Constant";
 import getImage from "../../APIHandler/getImage";
 import approve from "../../APIHandler/Dashboard/approve";
 import reject from "../../APIHandler/Dashboard/reject";
+import { Route, Routes, useNavigate } from "react-router-dom";
+import { Plot } from "../Plot/Plot";
+import PopupWrapper from "../PopupWrapper/PopupWrapper";
 
 export default function CheckFiles() {
   let { name, accessCode } = React.useContext(MyContext);
@@ -14,7 +17,7 @@ export default function CheckFiles() {
   let [selectedUser, setSelectedUser] = useState<User | null>(null);
   let [fileMappingUser, setFileMappingUser] = useState<Map<string, User>>();
   let [selectedFileNo, setSelectedFileNo] = useState<string>();
-
+  const navigate = useNavigate();
   useEffect(() => {
     GetUnverified(getCookie(COOKIE.KEY), accessCode).then(
       (users: Array<any>) => {
@@ -37,25 +40,6 @@ export default function CheckFiles() {
     let userDetail = fileMappingUser.get(file);
     setSelectedFileNo(file.trim());
     setSelectedUser(userDetail);
-  };
-  const approveSelected = () => {
-    approve(selectedFileNo, selectedUser.AadharNo)
-      .then((res) => {
-        alert(res);
-      })
-      .catch((err) => {
-        alert(err);
-      });
-  };
-
-  const rejectSelected = () => {
-    reject(selectedFileNo, selectedUser.AadharNo)
-      .then((res) => {
-        alert(res);
-      })
-      .catch((err) => {
-        alert(err);
-      });
   };
 
   return (
@@ -151,43 +135,28 @@ export default function CheckFiles() {
                 )}
               </div>
               <button
-                style={{
-                  borderRadius: "1rem",
-                  display: "flex",
-                  justifyContent: "space-around",
-                  alignItems: "center",
-                  width: "150px",
-                  margin: "10px",
+                onClick={() => {
+                  navigate(
+                    PATWARI.INDEX + PATWARI.CHECK_FILES + `/${selectedFileNo}`
+                  );
                 }}
-                type="submit"
                 className="btn btn-outline-light"
-                onClick={approveSelected}
               >
-                Approve
-                <i
-                  style={{ fontSize: "18pt" }}
-                  className="bi bi-arrow-right"
-                ></i>
+                Fill data
               </button>
-              <button
-                style={{
-                  borderRadius: "1rem",
-                  display: "flex",
-                  justifyContent: "space-around",
-                  alignItems: "center",
-                  width: "150px",
-                  margin: "10px",
-                }}
-                type="submit"
-                className="btn btn-outline-light"
-                onClick={rejectSelected}
-              >
-                Reject
-                <i
-                  style={{ fontSize: "18pt" }}
-                  className="bi bi-arrow-right"
-                ></i>
-              </button>
+              <Routes>
+                <Route path="/:files" element={<PopupWrapper />}>
+                  <Route
+                    index
+                    element={
+                      <Plot
+                        fileId={selectedFileNo}
+                        aadhar={selectedUser?.AadharNo}
+                      />
+                    }
+                  />
+                </Route>
+              </Routes>
             </div>
           ) : (
             <></>

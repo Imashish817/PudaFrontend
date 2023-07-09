@@ -24,7 +24,10 @@ export function Patwari() {
     >
       <Routes>
         <Route index element={<Dashboard options={options} />}></Route>
-        <Route path={PATWARI.CHECK_FILES} element={<CheckFiles />}></Route>
+        <Route
+          path={PATWARI.CHECK_FILES + "/*"}
+          element={<CheckFiles />}
+        ></Route>
       </Routes>
     </div>
   );
