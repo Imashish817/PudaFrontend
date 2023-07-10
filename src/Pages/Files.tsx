@@ -44,6 +44,7 @@ export default function Files() {
         padding: "10px",
         background: "linear-gradient(to right, #3c1053, #ad5389)",
         color: "white",
+        overflow: "auto",
       }}
     >
       <div className="text-center">

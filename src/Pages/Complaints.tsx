@@ -19,6 +19,7 @@ export default function Complaints() {
         background: "linear-gradient(to right, #3c1053, #ad5389)",
         color: "white",
         padding: "20px",
+        overflow: "auto",
       }}
     >
       {alert ? (

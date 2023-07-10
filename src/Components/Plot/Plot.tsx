@@ -30,7 +30,7 @@ export function Plot(props) {
     },
   ]);
   const [rows, setRows] = useState<Array<any>>([
-    ["Size", "111", "111", "111", "111", "111", "111"],
+    ["Size", "1100", "550", "255", "200", "100", "60"],
     ["1 acre(8 kanal)", "", "", "", "", "", ""],
     ["0.5 acre(4 kanal)", "", "", "", "", "", ""],
     ["0.25 acre(2 kanal)", "", "", "", "", "", ""],
@@ -66,18 +66,9 @@ export function Plot(props) {
             let breakupRow1 = [...rows[1]];
             let breakupRow2 = [...rows[2]];
             let breakupRow3 = [...rows[3]];
-            breakupRow1 = breakupRow1.splice(
-              breakupRow1.indexOf(breakupRow1[0]),
-              1
-            );
-            breakupRow2 = breakupRow2.splice(
-              breakupRow2.indexOf(breakupRow2[0]),
-              1
-            );
-            breakupRow3 = breakupRow3.splice(
-              breakupRow3.indexOf(breakupRow3[0]),
-              1
-            );
+            breakupRow1.splice(breakupRow1.indexOf(breakupRow1[0]), 1);
+            breakupRow2.splice(breakupRow2.indexOf(breakupRow2[0]), 1);
+            breakupRow3.splice(breakupRow3.indexOf(breakupRow3[0]), 1);
             approve(
               props.fileId,
               props.aadhar,
@@ -94,7 +85,7 @@ export function Plot(props) {
                 navigate(PATWARI.INDEX + PATWARI.CHECK_FILES);
               });
           }}
-          className="btn btn-outline-primary"
+          className="btn btn-outline-primary mr-2"
         >
           Approve
         </button>

@@ -38,6 +38,7 @@ export function Admin() {
         height: "100%",
         background: "linear-gradient(to right, #3c1053, #ad5389)",
         color: "white",
+        overflow: "auto",
       }}
     >
       <Routes>

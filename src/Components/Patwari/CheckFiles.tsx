@@ -5,8 +5,6 @@ import GetUnverified from "../../APIHandler/User/GetUnverified";
 import getCookie from "../../Cookie/getCookie";
 import { COOKIE, PATWARI } from "../../Constants/Constant";
 import getImage from "../../APIHandler/getImage";
-import approve from "../../APIHandler/Dashboard/approve";
-import reject from "../../APIHandler/Dashboard/reject";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import { Plot } from "../Plot/Plot";
 import PopupWrapper from "../PopupWrapper/PopupWrapper";
@@ -115,7 +113,16 @@ export default function CheckFiles() {
                 alignItems: "center",
               }}
             >
-              <div style={{ display: "flex" }}>
+              <div
+                style={{
+                  display: "flex",
+                  flexWrap: "wrap",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  overflow: "auto",
+                  height: "400px",
+                }}
+              >
                 {typeof selectedUser.URLPaths === "string" ? (
                   <div>
                     <img src={getImage(selectedUser.URLPaths)} />
@@ -126,9 +133,12 @@ export default function CheckFiles() {
                     if (!path) return;
                     return (
                       <div
-                        style={{ margin: "0 30px", border: "1px solid white" }}
+                        style={{
+                          margin: "10px 30px",
+                          border: "1px solid white",
+                        }}
                       >
-                        <img style={{ width: "300px" }} src={getImage(path)} />
+                        <img style={{ width: "200px" }} src={getImage(path)} />
                       </div>
                     );
                   })
@@ -140,7 +150,7 @@ export default function CheckFiles() {
                     PATWARI.INDEX + PATWARI.CHECK_FILES + `/${selectedFileNo}`
                   );
                 }}
-                className="btn btn-outline-light"
+                className="btn btn-outline-light mt-2"
               >
                 Fill data
               </button>

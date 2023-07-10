@@ -20,6 +20,7 @@ export function Patwari() {
         height: "100%",
         color: "white",
         background: "linear-gradient(to right, #3c1053, #ad5389)",
+        overflow: "auto",
       }}
     >
       <Routes>

@@ -14,9 +14,9 @@ export default function approve(
       ? JSON.stringify({
           FileNo: fileNo,
           Aadharno: aadhar,
-          breakupRow1: breakupRow1,
-          breakupRow2: breakupRow2,
-          breakupRow3: breakupRow3,
+          breakuprow1: breakupRow1,
+          breakuprow2: breakupRow2,
+          breakuprow3: breakupRow3,
         })
       : JSON.stringify({
           FileNo: fileNo,
