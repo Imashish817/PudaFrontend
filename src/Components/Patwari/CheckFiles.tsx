@@ -138,7 +138,12 @@ export default function CheckFiles() {
                           border: "1px solid white",
                         }}
                       >
-                        <img style={{ width: "200px" }} src={getImage(path)} />
+                        <a target="__blank" href={getImage(path)}>
+                          <img
+                            style={{ width: "300px" }}
+                            src={getImage(path)}
+                          />
+                        </a>
                       </div>
                     );
                   })

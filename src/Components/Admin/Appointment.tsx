@@ -35,7 +35,7 @@ export default function Appointment() {
     },
   ]);
   const [rows, setRows] = useState<Array<any>>([
-    ["Size", "1100", "550", "255", "200", "100", "60"],
+    ["Size (sq yards)", "1100", "550", "255", "200", "100", "60"],
     ["1 acre(8 kanal)", "", "", "", "", "", ""],
     ["0.5 acre(4 kanal)", "", "", "", "", "", ""],
     ["0.25 acre(2 kanal)", "", "", "", "", "", ""],
@@ -68,13 +68,24 @@ export default function Appointment() {
       bookUser[0].unshift("1 acre(8 kanal)");
       bookUser[1].unshift("0.5 acre(4 kanal)");
       bookUser[2].unshift("0.25 acre(2 kanal)");
-      bookUser.unshift(["Size", "1100", "550", "255", "200", "100", "60"]);
+      bookUser.unshift([
+        "Size (sq yards)",
+        "1100",
+        "550",
+        "255",
+        "200",
+        "100",
+        "60",
+      ]);
       setRows(bookUser);
     }
   }, [bookUser]);
   const submitter = (event) => {
     event.preventDefault();
     let form = event.target;
+    if (form && (!form[0]?.value || !form[1]?.value || !form[2]?.value)) {
+      return;
+    }
     setAlert("");
     bookAppointment(
       getCookie(COOKIE.KEY),

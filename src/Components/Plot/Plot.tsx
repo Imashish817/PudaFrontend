@@ -30,7 +30,7 @@ export function Plot(props) {
     },
   ]);
   const [rows, setRows] = useState<Array<any>>([
-    ["Size", "1100", "550", "255", "200", "100", "60"],
+    ["Size (sq yards)", "1100", "550", "255", "200", "100", "60"],
     ["1 acre(8 kanal)", "", "", "", "", "", ""],
     ["0.5 acre(4 kanal)", "", "", "", "", "", ""],
     ["0.25 acre(2 kanal)", "", "", "", "", "", ""],

@@ -1,7 +1,10 @@
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { MyContext } from "../Storage/Storage";
 
 export default function Dashboard(props) {
+  let { files } = React.useContext(MyContext);
+  let [disable, setDisable] = useState(true);
   const gradients = [
     "linear-gradient(to right, #240b36, #c31432)",
     "linear-gradient(to right, #4286f4, #373B44)",
@@ -17,6 +20,13 @@ export default function Dashboard(props) {
       disabled: any;
     }>
   >(props?.options ? props.options : []);
+  useEffect(() => {
+    if (files && files.length > 0) {
+      setTimeout(() => {
+        setDisable(false);
+      }, 10000);
+    }
+  }, []);
   return (
     <div
       style={{
@@ -31,6 +41,7 @@ export default function Dashboard(props) {
           justifyContent: "center",
           padding: "10px",
           position: "relative",
+          flexDirection: "column",
           top: 0,
         }}
         className="text-center"
@@ -92,6 +103,25 @@ export default function Dashboard(props) {
             );
           })}
         </div>
+        {files?.length > 0 && disable && (
+          <div style={{ position: "absolute", bottom: "10px", width: "100%" }}>
+            {files.map((file) => {
+              return file?.AppointmentDate ? (
+                <div
+                  style={{ width: "600px", margin: "20px auto" }}
+                  className="alert alert-primary text-center"
+                  role="alert"
+                >
+                  Dear user, Your file No {file?.FileNo} is approved. Your
+                  appointment date is {file?.AppointmentDate?.split("$")[0]} (
+                  {file?.AppointmentDate?.split("$")[1]})
+                </div>
+              ) : (
+                <></>
+              );
+            })}
+          </div>
+        )}
       </div>
     </div>
   );

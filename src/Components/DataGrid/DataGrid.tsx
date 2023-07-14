@@ -13,6 +13,25 @@ export default function DataGrid(props) {
         <div className="container">
           <div className="row">
             {(() => {
+              let temp = ["", "Industrial", "Commercial"].map((column, idx) => {
+                if (idx === 0) {
+                  return (
+                    <div style={{ width: "100px" }} className="text-center">
+                      <p>{column}</p>
+                    </div>
+                  );
+                }
+                return (
+                  <div style={{ width: "150px" }} className="col text-center">
+                    <p>{column}</p>
+                  </div>
+                );
+              });
+              return temp;
+            })()}
+          </div>
+          <div className="row">
+            {(() => {
               let temp = columns.map((column) => {
                 return (
                   <div style={{ width: "150px" }} className="col text-center">
@@ -56,6 +75,19 @@ export default function DataGrid(props) {
               );
             });
             return data;
+          })()}
+          {(() => {
+            let temp = [
+              "SCOs (24'X75' and 18'X50) and Shops (12'45') leave 8'3\"corridor on ground floor. Basement is allowed in all cases.",
+              "Land owners can opt for bigger plot sizes wherever possible.",
+            ].map((column, idx) => {
+              return (
+                <div className="col text-center">
+                  <p>{column}</p>
+                </div>
+              );
+            });
+            return temp;
           })()}
         </div>
       )}

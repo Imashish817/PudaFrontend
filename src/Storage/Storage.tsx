@@ -12,6 +12,7 @@ export type MyContextValues = {
     ApplicationsForm1: String;
     ApplicationsForm2: String;
     ApplicationsForm3: String;
+    AppointmentDate: String;
     IsAproved: String;
   }>;
   updateName: (name: string) => void;
@@ -28,7 +29,12 @@ export type MyContextValues = {
       SignedAplication: String;
       ApplicationsForm1: String;
       ApplicationsForm2: String;
-      IsAproved: String;
+      ApplicationsForm3: String;
+      AppointmentDate: String;
+      ApprovedByacc: String;
+      ApprovedBycon: String;
+      ApprovedByops: String;
+      ApprovedBypat: String;
     }>
   ) => void;
 };
@@ -53,7 +59,11 @@ export const MyContext = createContext<MyContextValues>({
       ApplicationsForm1: String;
       ApplicationsForm2: String;
       ApplicationsForm3: String;
-      IsAproved: String;
+      AppointmentDate: String;
+      ApprovedByacc: String;
+      ApprovedBycon: String;
+      ApprovedByops: String;
+      ApprovedBypat: String;
     }>
   ) => {},
 });
@@ -77,7 +87,11 @@ export function MyProvider({ children }: { children: React.ReactNode }) {
       ApplicationsForm1: String;
       ApplicationsForm2: String;
       ApplicationsForm3: String;
-      IsAproved: String;
+      AppointmentDate: String;
+      ApprovedByacc: String;
+      ApprovedBycon: String;
+      ApprovedByops: String;
+      ApprovedBypat: String;
     }>
   ) => {
     setUserInfo({ name, mobile, aadhar, code, files });
