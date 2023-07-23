@@ -42,6 +42,7 @@ export default function ValidateFile() {
     approve(selectedFileNo, selectedUser.AadharNo)
       .then((res) => {
         alert(res);
+        window.location.reload();
       })
       .catch((err) => {
         alert(err);
@@ -51,6 +52,7 @@ export default function ValidateFile() {
     reject(selectedFileNo, selectedUser.AadharNo)
       .then((res) => {
         alert(res);
+        window.location.reload();
       })
       .catch((err) => {
         alert(err);

@@ -44,6 +44,7 @@ export default function CheckFiles() {
     sendToPatwari(selectedFileNo, selectedUser.AadharNo)
       .then((res) => {
         alert(res);
+        window.location.reload();
       })
       .catch((err) => {
         alert(err);
@@ -53,6 +54,7 @@ export default function CheckFiles() {
     sendToAccounts(selectedFileNo, selectedUser.AadharNo)
       .then((res) => {
         alert(res);
+        window.location.reload();
       })
       .catch((err) => {
         alert(err);
@@ -62,6 +64,7 @@ export default function CheckFiles() {
     approve(selectedFileNo, selectedUser.AadharNo)
       .then((res) => {
         alert(res);
+        window.location.reload();
       })
       .catch((err) => {
         alert(err);
@@ -72,6 +75,7 @@ export default function CheckFiles() {
     reject(selectedFileNo, selectedUser.AadharNo)
       .then((res) => {
         alert(res);
+        window.location.reload();
       })
       .catch((err) => {
         alert(err);
