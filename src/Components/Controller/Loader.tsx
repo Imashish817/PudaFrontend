@@ -42,8 +42,8 @@ const DashboardModule = React.lazy(() =>
 export default function Loader() {
   const { updateUser } = React.useContext<MyContextValues>(MyContext);
   const [loading, setLoading] = useState(true);
+  const [errorCode, setErrorCode] = useState(0);
   const navigate = useNavigate();
-  let errorCode = 0;
   useEffect(() => {
     let token = getCookie(COOKIE.KEY);
     if (!token) {
@@ -53,6 +53,7 @@ export default function Loader() {
     fetchViaToken(token)
       .then((response) => {
         response = response.user;
+
         updateUser(
           response.Name,
           response.MobileNo,
@@ -60,6 +61,9 @@ export default function Loader() {
           response.UserType,
           response.Files
         );
+        if (response.UserType !== "1" && window.screen.width < 768) {
+          setErrorCode(501);
+        }
         setLoading(false);
       })
       .catch((err) => {
@@ -71,7 +75,7 @@ export default function Loader() {
         ) {
           navigate(USER.LOGIN);
         } else if (err.response && err.response.status >= 500) {
-          errorCode = err.response.status;
+          setErrorCode(err.response.status);
         }
       });
   }, []);
