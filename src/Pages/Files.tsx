@@ -10,6 +10,7 @@ export default function Files() {
   const [approvedBycon, setApprovedBycon] = React.useState<String>();
   const [approvedByops, setApprovedByops] = React.useState<String>();
   const [approvedBypat, setApprovedBypat] = React.useState<String>();
+  const [appointmentDate, setAppointmenDate] = React.useState<String>();
   const setCurrentFile = (file) => {
     setApplications([
       file?.SignedAplication,
@@ -60,6 +61,15 @@ export default function Files() {
         setApprovedBypat("Rejected by patwari");
         break;
     }
+    switch (file?.AppointmentDate) {
+      case undefined:
+        break;
+      default:
+        setAppointmenDate(
+          `Appointment Date is ${file?.AppointmentDate.split("$")[0]}`
+        );
+        break;
+    }
   };
   const setApplicationData = (event) => {
     let file = files[event.target.value];
@@ -108,6 +118,7 @@ export default function Files() {
           {approvedBycon ? <p>{approvedBycon}</p> : <></>}
           {approvedBypat ? <p>{approvedBypat}</p> : <></>}
           {approvedByacc ? <p>{approvedByacc}</p> : <></>}
+          {appointmentDate ? <p>{appointmentDate}</p> : <></>}
         </div>
         <div
           style={{

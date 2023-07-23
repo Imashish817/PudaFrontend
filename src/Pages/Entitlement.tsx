@@ -38,7 +38,7 @@ export default function Entitlement() {
           justifyContent: "center",
         }}
       >
-        <div className="w-100">
+        <div className="w-100" style={{ overflow: "auto", height: "100%" }}>
           <div className="element-container">
             <p>Hand written application</p>
             <div
@@ -61,7 +61,8 @@ export default function Entitlement() {
                   let file = event.target.files[0];
                   signedApplicationName.current.value = file.name;
                   setSignedApplicationFile(event.target.files[0]);
-                }} multiple
+                }}
+                multiple
               />
               <div style={{ display: "flex", justifyContent: "center" }}>
                 <button
@@ -102,7 +103,8 @@ export default function Entitlement() {
                   let file = event.target.files[0];
                   application1Name.current.value = file.name;
                   setApplication1File(file);
-                }} multiple
+                }}
+                multiple
               />
               <div style={{ display: "flex", justifyContent: "center" }}>
                 <button
@@ -143,7 +145,8 @@ export default function Entitlement() {
                   let file = event.target.files[0];
                   application2Name.current.value = file.name;
                   setApplication2File(file);
-                }}  multiple
+                }}
+                multiple
               />
               <div style={{ display: "flex", justifyContent: "center" }}>
                 <button
@@ -183,7 +186,8 @@ export default function Entitlement() {
                   let file = event.target.files[0];
                   application3Name.current.value = file.name;
                   setApplication3File(file);
-                }} multiple
+                }}
+                multiple
                 style={{ display: "none" }}
               />
               <div style={{ display: "flex", justifyContent: "center" }}>
